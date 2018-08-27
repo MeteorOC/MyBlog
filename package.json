@@ -14,7 +14,8 @@
     "docs:build": "vuepress build",
     "docs:deploy": "yubisaki deploy -u bloss -p docs -r bloss.github.io",
     "deploy": "gh-pages -d dist",
-    "deploy:build": "npm run docs:build && gh-pages -d dist"
+    "deploy:build": "npm run docs:build && gh-pages -d dist",
+    "deploy:push": "git push -f https://github.com/MeteorOCC/MyBlog.git master:gh-pages"
   },
   "dependencies": {
     "markdown-it-imsize": "^1.0.0",

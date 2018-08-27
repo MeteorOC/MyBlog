@@ -1,14 +1,14 @@
 module.exports = {
   title: 'Meteor', // 设置网站标题
-  base: '/', // 设置站点根路径
-  repo: 'https://github.com/MeteorOCC/', // 添加 github 链接
+  base: '/MyBlog/', // 设置站点根路径
+  repo: 'https://github.com/MeteorOCC/MyBlog/', // 添加 github 链接
   dest: './dist',
   description: '欢迎来到我的个人页面',
-  chainWebpack: (config, isServer) => {
-    config
-      .output
-      .publicPath('./')
-  },
+  // chainWebpack: (config, isServer) => {
+  //   config
+  //     .output
+  //     .publicPath('./')
+  // },
   themeConfig: {
     // 添加导航栏
     nav: [{
