@@ -1,9 +1,8 @@
 {
-  "name": "@gfloan/app.frontend.web.utils",
+  "name": "my_blog",
   "version": "1.0.0",
   "description": "My-Blog",
   "author": "LZC <meteoroc@outlook.com>",
-  "main": "./dist/index.js",
   "license": "MIT",
   "private": false,
   "repository": {
@@ -11,13 +10,16 @@
     "url": "https://github.com/MeteorOCC/MyBlog.git"
   },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy": "yubisaki deploy -u bloss -p docs -r bloss.github.io"
+    "docs:dev": "vuepress dev",
+    "docs:build": "vuepress build",
+    "docs:deploy": "yubisaki deploy -u bloss -p docs -r bloss.github.io",
+    "deploy": "gh-pages -d dist",
+    "deploy:build": "npm run docs:build && gh-pages -d dist"
   },
   "dependencies": {
-    "markdown-it-task-lists": "^1.0.0",
     "markdown-it-imsize": "^1.0.0",
+    "markdown-it-task-lists": "^1.0.0",
+    "vuepress": "^0.10.0",
     "vuepress-theme-yubisaki": "^1.1.9"
   },
   "devDependencies": {
