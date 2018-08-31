@@ -1,8 +1,8 @@
-# Axios
+## Axios
 
 ### 基于Promise且用于Node.js和浏览器的HTTP客户端
 
-`前言` :目前手上的项目，对Ajax请求/响应之后的各种异常状态的响应，需要仔细了解Axios这个Ajax HTTP请求工具的使用方法，在了解的过程中顺便翻译了一下，Axios的文档还是很清晰明了的，看完文档后便可明白：
+> 目前手上的项目，对Ajax请求/响应之后的各种异常状态的响应，需要仔细了解Axios这个Ajax HTTP请求工具的使用方法，在了解的过程中顺便翻译了一下，Axios的文档还是很清晰明了的，看完文档后便可明白：
 
 *  Axios请求失败后、响应失败后、请求发送前、响应返回后，请求超时时等这些情况的处理(拦截器)
 * 怎么样对错误进行自定义处理(错误处理)
@@ -12,7 +12,7 @@
 * async/await在Axios的使用方法
 * Axios API的一些别名、缩写
 
-`注意` : Axios中分为两种数据传输的情况，一种是application/x-www-form-urlencoded格式下的params，一种是没有特别指明格式下的data,Axios默认是将数据以json格式传回，如果需要/user?id=xxx这种形式传回的话，则需要在config中添加params字段。
+> `注意` : Axios中分为两种数据传输的情况，一种是application/x-www-form-urlencoded格式下的params，一种是没有特别指明格式下的data,Axios默认是将数据以json格式传回，如果需要/user?id=xxx这种形式传回的话，则需要在config中添加params字段。
 
 ### 特性：
 
@@ -293,76 +293,87 @@ const instance = axios.create({
     firstName: 'Fred'
   },
 
-  // `timeout` specifies the number of milliseconds before the request times out.
-  // If the request takes longer than `timeout`, the request will be aborted.
-  timeout: 1000, // default is `0` (no timeout)
+  // `timeout` 指定服务器请求超时时间之前的的超时毫秒数
+  // 如果请求时长超过 `timeout`的设定值, 该请求将被中止.
+  timeout: 1000, // 默认为 `0` (没有超时时间)
 
   // `withCredentials` indicates whether or not cross-site Access-Control requests
-  // should be made using credentials
+  // `withCredentials`表示是否跨域访问控制请求
+  // 应该使用凭证
   withCredentials: false, // default
 
-  // `adapter` allows custom handling of requests which makes testing easier.
+  // `adapter` 允许自定义处理请求，使测试更容易
   // Return a promise and supply a valid response (see lib/adapters/README.md).
+  // 返回一个promise并提供一个有效的响应(查看 lib/adapters/README.md)
   adapter: function (config) {
     /* ... */
   },
 
-  // `auth` indicates that HTTP Basic auth should be used, and supplies credentials.
-  // This will set an `Authorization` header, overwriting any existing
-  // `Authorization` custom headers you have set using `headers`.
+  // `auth` 表示应该使用HTTP Basic身份验证，并提供凭据.
+  // 这将会设置一个 `Authorization` header, 覆盖任何现有的header
+  // `Authorization` 是您已设置的自定义 `headers`.
   auth: {
     username: 'janedoe',
     password: 's00pers3cret'
   },
 
-  // `responseType` indicates the type of data that the server will respond with
-  // options are 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
-  responseType: 'json', // default
+  // `responseType` 表示服务器将响应的数据类型
+  // 可选项为 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
+  responseType: 'json', // 默认为json格式
+  // `responseEncoding` 表示用于解码response的编码
+  // Note: 忽略'stream' 或者 client-side 请求的`responseType`
+  responseEncoding: 'utf8', // 默认为utf8
 
-  // `responseEncoding` indicates encoding to use for decoding responses
-  // Note: Ignored for `responseType` of 'stream' or client-side requests
-  responseEncoding: 'utf8', // default
-
-  // `xsrfCookieName` is the name of the cookie to use as a value for xsrf token
-  xsrfCookieName: 'XSRF-TOKEN', // default
+  // `xsrfCookieName` 是用作xsrf token值的cookie名称
+  xsrfCookieName: 'XSRF-TOKEN', // 默认为XSRF-TOKEN
 
   // `xsrfHeaderName` is the name of the http header that carries the xsrf token value
-  xsrfHeaderName: 'X-XSRF-TOKEN', // default
+  // `xsrHeaderName`是带有xsrf token值的http header的名称
+  xsrfHeaderName: 'X-XSRF-TOKEN', // 默认为X-XSRF-TOKEN
 
   // `onUploadProgress` allows handling of progress events for uploads
+  // `onUploadProgress`允许处理上传的进度事件
   onUploadProgress: function (progressEvent) {
     // Do whatever you want with the native progress event
   },
 
   // `onDownloadProgress` allows handling of progress events for downloads
+  // `onDownloadProgress` 允许处理下载的进度事件
   onDownloadProgress: function (progressEvent) {
     // Do whatever you want with the native progress event
   },
 
   // `maxContentLength` defines the max size of the http response content in bytes allowed
+  // `maxContentLength` 定义http相应内容的最大大小(单位:字节bytes)
   maxContentLength: 2000,
 
   // `validateStatus` defines whether to resolve or reject the promise for a given
+  // `validateStatus` 定义是否resolve或reject给定的promise
   // HTTP response status code. If `validateStatus` returns `true` (or is set to `null`
   // or `undefined`), the promise will be resolved; otherwise, the promise will be
   // rejected.
+  // HTTP响应状态码，如果validateStatus返回为true/null/undefined，promise将会被resolved，否则，promise将会被rejected
   validateStatus: function (status) {
     return status >= 200 && status < 300; // default
   },
 
   // `maxRedirects` defines the maximum number of redirects to follow in node.js.
+  // `maxRedirects` 定义在node.js环境中要遵循的最大重定向数
   // If set to 0, no redirects will be followed.
+  // 如果设置为0，则没有重定向将会被执行
   maxRedirects: 5, // default
 
   // `socketPath` defines a UNIX Socket to be used in node.js.
   // e.g. '/var/run/docker.sock' to send requests to the docker daemon.
   // Only either `socketPath` or `proxy` can be specified.
   // If both are specified, `socketPath` is used.
+  // `socketPath`定义了一个在Node.js使用的Unix Socket，比如说 '/var/run/docker.sock'将会被请求发送到docker daemon，只能指定socketPath或者proxy中的一项，如果都指定了，那么以socketPath为准。
   socketPath: null, // default
 
   // `httpAgent` and `httpsAgent` define a custom agent to be used when performing http
   // and https requests, respectively, in node.js. This allows options to be added like
   // `keepAlive` that are not enabled by default.
+  // 定义了执行http时要使用的自定义代理和Node.js中的https请求，允许像keepAlive这样的可选字段加入(keepAlive默认情况下不启用)
   httpAgent: new http.Agent({ keepAlive: true }),
   httpsAgent: new https.Agent({ keepAlive: true }),
 
@@ -376,6 +387,11 @@ const instance = axios.create({
   // supplies credentials.
   // This will set an `Proxy-Authorization` header, overwriting any existing
   // `Proxy-Authorization` custom headers you have set using `headers`.
+  // 定义代理服务器的主机名和端口
+  // 你可以使用传统的`http_proxy`和`https_proxy`环境变量来定义代理。 如果你使用环境变量进行代理配置，则还可以定义“no_proxy”环境
+  // 变量作为不应被代理的以逗号分隔的域列表。
+  // 使用`false`来禁用代理，忽略环境变量。
+  //`auth`表示HTTP Basic auth应该用于连接代理，并提供凭证。这将设置一个`Proxy-Authorization` header，覆盖你用`header`设置的任何现有`Proxy-Authorization`自定义header文件。
   proxy: {
     host: '127.0.0.1',
     port: 9000,
@@ -385,8 +401,8 @@ const instance = axios.create({
     }
   },
 
-  // `cancelToken` specifies a cancel token that can be used to cancel the request
-  // (see Cancellation section below for details)
+  // `cancelToken` 指明一个可以被用于取消请求的 cancel token
+  // (查看 Cancellation 段落下的细节)
   cancelToken: new CancelToken(function (cancel) {
   })
 }
