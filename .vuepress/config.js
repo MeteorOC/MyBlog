@@ -19,25 +19,12 @@ module.exports = {
         link: '/common/'
       },
       {
-        text: '随笔',
-        link: '/essays/'
-      },
-      {
-        text: '项目',
-        link: '/project/'
-      },
-      {
         text: 'github',
         // 这里是下拉列表展现形式。
         items: [{
-            text: 'focus-outside',
-            link: 'https://github.com/MeteorOC'
-          },
-          {
-            text: 'stylus-converter',
-            link: 'https://github.com/MeteorOC'
-          }
-        ]
+          text: '其实我并没有这一个选项quq',
+          link: 'https://github.com/MeteorOC'
+        }]
       }
     ]
   }
