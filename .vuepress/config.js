@@ -16,14 +16,17 @@ module.exports = {
         link: '/'
       }, {
         text: '博客',
-        link: '/common/'
+        items: [{
+          text: '正在动工',
+          link: 'https://github.com/MeteorOCC'
+        }]
       },
       {
         text: 'github',
         // 这里是下拉列表展现形式。
         items: [{
-          text: '其实我并没有这一个选项quq',
-          link: 'https://github.com/MeteorOC'
+          text: '并没有这一个选项quq',
+          link: 'https://github.com/MeteorOCC'
         }]
       }
     ]
