@@ -17,7 +17,7 @@ module.exports = {
       }, {
         text: '博客',
         items: [{
-          text: '正在动工',
+          text: '正在动工,可先使用搜索栏搜索关键字寻找博文',
           link: 'https://github.com/MeteorOCC'
         }]
       },
