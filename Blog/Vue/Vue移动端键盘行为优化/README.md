@@ -34,7 +34,7 @@ IOS端无需做过多兼容，本身已经有了很好的支持，只需要将�
 
 更多的需求：比如说我输入账号的时候不希望密码输入框被挡住这类的需求，如果在UI坚持不变的情况下，可以让UI和产品PK，如果大家都觉得是你的问题的话，我想你可以有一些比较大胆的想法，比如真人快打。
 
-### 全局指令：
+### 用于键盘生效时抬升键盘的全局指令：
 
 ```javascript
 /**
@@ -83,14 +83,14 @@ Vue.directive('input-positioning', {
         } else if (!binding.expression || !binding.value) {
             return
         }
-		//这是我们对设备的判断，自行在项目中设置
+
         let shouldTrigger = getVueInstance(vnode).$global.userAgent.IS_ANDROID
 
         if (shouldTrigger) {
             let input = getInputElement(el)
 
-            // 给input添加事件
-            if (input) {
+            // 给input添加事件，非password type的input框使用以下处理：
+            if (input && input.type !== 'password') {
                 // 记录未适配时的位置
                 input.addEventListener('focus', function (event) {
                     getInitPositionOfElement(el, vnode)
@@ -110,6 +110,11 @@ Vue.directive('input-positioning', {
                         this.blur()
                     }
                 })
+            } else if (input && input.type === 'password') {
+                //根据项目不同，这边我多做了一个判断，主要是我们是金融项目，所有的password type input都要用到安全键盘。只要input框得到焦点那么浏览器自带的键盘就会弹出，要避免这种情况就使用document.activeElement.blur()。普通项目去掉这个判断即可
+                input.addEventListener('focus', function (event) {
+                    document.activeElement.blur()
+                })
             }
         }
     }
@@ -124,9 +129,15 @@ document.getElementById('app').ontouchend = () => {
     if (this.$global.userAgent.IS_IOS) {
         //CHILDRENROUTER是我项目中定义的router-view的统一ID，遍历其中的input并使它们全部失焦。
         if (document.getElementById('CHILDRENROUTER').querySelector('input')) {
-            document.getElementById('CHILDRENROUTER').querySelector('input').blur()
+            document.getElementById('CHILDRENROUTER').querySelectorAll('input').blur()
         }
     }
 }
+```
+
+### 对安全键盘行为的全局指令：
+
+```javascript
+//作者正在思考中
 ```
 
