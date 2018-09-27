@@ -14,7 +14,9 @@
 
 在前端历史长河中，一般都是使用：
 
-![image-20180927104029227](/Users/meteor/Library/Application Support/typora-user-images/image-20180927104029227.png)
+> 文字父元素宽度/font-size=可容纳字符数；
+>
+> 通过这种方式可轻量实现(不考虑不同字符宽度不同)
 
 这种方法来解决，而考虑更周到一些，那就还要判断行高和平均字宽，等等。
 
