@@ -4,20 +4,20 @@
 
 ```javascript
 ---/Module|Components|Common/
-|---- /module_name                                     模块名                       
-|---- /module_name/index.vue                           该模块下的Vue文件  
-|---- /module_name/children_module_name                模块的子模块  
+|---- /module_name                                     模块名
+|---- /module_name/index.vue                           该模块下的Vue文件
+|---- /module_name/children_module_name                模块的子模块
 ---/css/
-|---- /base.css                                        重置浏览器样式    
+|---- /base.css                                        重置浏览器样式
 |---- /method_xxx.css                                  对某个功能/类名定义的全局样式
-|---- /index.css									   将上述css合并
+|---- /index.css									                     将上述css合并
 ---/js/
-|---- /lib                      					   第三方依赖
-|---- /lib/jquery.2.2.3.min.js  					   具体依赖，一定要有版本号 
+|---- /lib                      					             第三方依赖
+|---- /lib/jquery.2.2.3.min.js  					             具体依赖，一定要有版本号
 |---- /module|global function/                         js用于xx用途
 |---- /module|global function/xx.js                    该用途下的js功能细分
 ---/img/
-|---- /icon                                            路由对应的图片 
+|---- /icon                                            路由对应的图片
 |---- /page                                            小型通用图片
 |---- /page/module_name/                               模块对应图片
 |---- /common/                                         普通公用图片
@@ -25,18 +25,18 @@
 
 ### 项目命名规范
 
-* 全部英文小写字母，可以使用中线，如非必要不可出现其他字符，如login,my-order
+- 全部英文小写字母，可以使用中线，如非必要不可出现其他字符，如 login,my-order
 
-* 调用 `/lib`里面的文件需包含版本号，压缩文件需包含`min`关键词，其他插件则可不包含，如：`/lib/jquery.1.9.1.js`
+- 调用 `/lib`里面的文件需包含版本号，压缩文件需包含`min`关键词，其他插件则可不包含，如：`/lib/jquery.1.9.1.js`
 
 ### 格式&编码
 
-* 文本文件：`.xxx_UTF-8_\(无BOM)\_编码`
-* 图片文件: `.png_(PNG-24)_ .jpg_(压缩率8-12)_`
-* 动态图片:`.gif`
-* 压缩文件:`.tar.gz` `.zip` `.rar`
+- 文本文件：`.xxx_UTF-8_\(无BOM)\_编码`
+- 图片文件: `.png_(PNG-24)_ .jpg_(压缩率8-12)_`
+- 动态图片:`.gif`
+- 压缩文件:`.tar.gz` `.zip` `.rar`
 
-### CSS规范
+### CSS 规范
 
 #### 命名规范：
 
@@ -44,17 +44,17 @@
 - 不使用简单的方位词直接命名，如"left"，"bottom"
 - 不缩写单词，除非一看就明白的单词
 - 长名称或词组可以使用下划线作为连接符
-- 避免选择器嵌套层级过多，少于3级
-- 不要随意使用id，id应该按需使用，而不能滥用
-- 使用CSS缩写属性 ，比如padding:0 10px 5px 5px等等，这样精简代码同时又能提高用户的阅读体验。
+- 避免选择器嵌套层级过多，少于 3 级
+- 不要随意使用 id，id 应该按需使用，而不能滥用
+- 使用 CSS 缩写属性 ，比如 padding:0 10px 5px 5px 等等，这样精简代码同时又能提高用户的阅读体验。
 
 #### **参考如下：**
 
-| CSS样式命名          | 说明                     |
+| CSS 样式命名         | 说明                     |
 | -------------------- | ------------------------ |
 | 网页公共命名         |                          |
 | wrapper              | 页面外围控制整体布局宽度 |
-| container或content   | 容器,用于最外层          |
+| container 或 content | 容器,用于最外层          |
 | layout               | 布局                     |
 | head, header         | 页头部分                 |
 | foot, footer         | 页脚部分                 |
@@ -81,7 +81,7 @@
 | search_results       | 搜索结果                 |
 | copyright            | 版权信息                 |
 | branding             | 商标                     |
-| logo                 | 网站LOGO标志             |
+| logo                 | 网站 LOGO 标志           |
 | site_info            | 网站信息                 |
 | site_info_legal      | 法律声明                 |
 | site_info_credits    | 信誉                     |
@@ -108,7 +108,7 @@
 
 #### 书写规范：
 
-向"无ID，无层级，无标签"准则靠拢，可有效提高重用性，减小文件大小，提升渲染效率
+向"无 ID，无层级，无标签"准则靠拢，可有效提高重用性，减小文件大小，提升渲染效率
 
 #### 注释：
 
@@ -118,15 +118,15 @@
 
 #### 排列：不做硬性要求
 
-- Positioning（定位，如position，top，z-index）
-- Box model（盒模型，如display，box-sizing，width，border）
-- Typographic（排版，如font，line-height，text-align）
-- Visual（视觉，如background，color,opacity）
-- Other（其他，如cursor）
+- Positioning（定位，如 position，top，z-index）
+- Box model（盒模型，如 display，box-sizing，width，border）
+- Typographic（排版，如 font，line-height，text-align）
+- Visual（视觉，如 background，color,opacity）
+- Other（其他，如 cursor）
 
 > 由于定位（positioning）可以从正常的文档流中移除元素，并且还能覆盖盒模型（box model）相关的样式，因此排在首位。盒模型决定了组件的尺寸和位置，因此排在第二位。 其他属性只是影响组件的内部（inside）或者是不影响前两组属性，因此排在后面。
 
-### JS规范
+### JS 规范
 
 #### 命名规范：
 
@@ -136,18 +136,18 @@
 
 命名规范：前缀应当是名词。(函数的名字前缀为动词，以此区分变量和函数)
 
-命名建议：尽量在变量名字中体现所属类型，如:length、count等表示数字类型；而包含name、title表示为字符串类型。
+命名建议：尽量在变量名字中体现所属类型，如:length、count 等表示数字类型；而包含 name、title 表示为字符串类型。
 
 示例
 
 ```javascript
 // 好的命名方式
-var maxCount = 10;
-var tableTitle = 'LoginTable';
+var maxCount = 10
+var tableTitle = 'LoginTable'
 
 // 不好的命名方式
-var setCount = 10;
-var getTitle = 'LoginTable';
+var setCount = 10
+var getTitle = 'LoginTable'
 ```
 
 | 动词 | 含义                         | 返回值                                                |
@@ -166,8 +166,8 @@ var getTitle = 'LoginTable';
 命名规范：使用大写字母和下划线来组合命名，下划线用以分割单词
 
 ```javascript
-const MAX_COUNT = 10;
-const URL = 'http://gfloan.demo.com';
+const MAX_COUNT = 10
+const URL = 'http://gfloan.demo.com'
 ```
 
 **文件：**
@@ -176,22 +176,22 @@ const URL = 'http://gfloan.demo.com';
 
 使用 .js 扩展名，这个扩展名的兼容性最好。其实任何扩展名都可以，只要是 text 类型、编码正确即可
 
-用句点分隔表示名称中的从属关系，范围大的在前，如jQuery 的表单插件 Form既可以命名为jquery.form.js
+用句点分隔表示名称中的从属关系，范围大的在前，如 jQuery 的表单插件 Form 既可以命名为 jquery.form.js
 
 **注释:**
 
-使用多行注释,以/*开头，*/结尾
+使用多行注释,以/_开头，_/结尾
 
 **性能:**
 
 - 尽量选用局部变量而不是全局变量
 - 尽量使用链式写法
-- 尽量减少DOM调用
-- 将js脚本放到页面底部
-- 减少对dom的操作
-- 选择器的选择：尽量不用标签选择器，能用ID选择器的就不用class选择器
+- 尽量减少 DOM 调用
+- 将 js 脚本放到页面底部
+- 减少对 dom 的操作
+- 选择器的选择：尽量不用标签选择器，能用 ID 选择器的就不用 class 选择器
 
-### HTML规范
+### HTML 规范
 
 #### 标签规范：
 
@@ -199,7 +199,7 @@ const URL = 'http://gfloan.demo.com';
 
 双标签必须闭合，单标签用斜线闭合
 
-HTML第一行统一使用HTML5标准<!DOCTYPE html>
+HTML 第一行统一使用 HTML5 标准<!DOCTYPE html>
 
 一律统一标签结尾斜杠的书写形式：`<br />` `<hr />` 注意之间空格
 
@@ -211,7 +211,7 @@ HTML第一行统一使用HTML5标准<!DOCTYPE html>
 
 `<a>`标签缺省格式：`<a href="#" title="链接名称">xxx</>` 注：`target="_blank"` 根据需求决定
 
-style、link、script可省略type属性，因为 text/css 和 text/javascript 分别是他们的默认值
+style、link、script 可省略 type 属性，因为 text/css 和 text/javascript 分别是他们的默认值
 
 #### 注意事项:
 
@@ -219,8 +219,8 @@ style、link、script可省略type属性，因为 text/css 和 text/javascript �
 
 `css`文件都 置于头部
 
-HTML换行缩进：采用 tab空格
+HTML 换行缩进：采用 tab 空格
 
 其他效果`js`及`统计代码` 文件置于尾部
 
-手机端的页面都按750px来做，显示效果按375px。
+手机端的页面都按 750px 来做，显示效果按 375px。
