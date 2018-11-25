@@ -10,10 +10,10 @@
 ---/css/
 |---- /base.css                                        重置浏览器样式
 |---- /method_xxx.css                                  对某个功能/类名定义的全局样式
-|---- /index.css                     将上述css合并
+|---- /index.css                                       将上述css合并
 ---/js/
-|---- /lib                                  第三方依赖
-|---- /lib/jquery.2.2.3.min.js              具体依赖，一定要有版本号
+|---- /lib                                             第三方依赖
+|---- /lib/jquery.2.2.3.min.js                         具体依赖，一定要有版本号
 |---- /module|global function/                         js用于xx用途
 |---- /module|global function/xx.js                    该用途下的js功能细分
 ---/img/
