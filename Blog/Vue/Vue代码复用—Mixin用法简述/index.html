@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue代码复用-Mixin用法简述 | Meteor</title>
+    <meta name="description" content="欢迎来到我的个人页面">
+    
+    
+    <link rel="preload" href="/MyBlog/assets/css/23.styles.cc84573a.css" as="style"><link rel="preload" href="/MyBlog/assets/js/app.19eb8d83.js" as="script"><link rel="preload" href="/MyBlog/assets/js/16.205e0222.js" as="script"><link rel="prefetch" href="/MyBlog/assets/js/12.53cafe37.js"><link rel="prefetch" href="/MyBlog/assets/js/1.38c1cab2.js"><link rel="prefetch" href="/MyBlog/assets/js/2.493d4717.js"><link rel="prefetch" href="/MyBlog/assets/js/3.fec61410.js"><link rel="prefetch" href="/MyBlog/assets/js/4.7b46e1a9.js"><link rel="prefetch" href="/MyBlog/assets/js/5.a8da7034.js"><link rel="prefetch" href="/MyBlog/assets/js/6.1afa3de3.js"><link rel="prefetch" href="/MyBlog/assets/js/7.bb628056.js"><link rel="prefetch" href="/MyBlog/assets/js/8.4320c542.js"><link rel="prefetch" href="/MyBlog/assets/js/9.ae9485eb.js"><link rel="prefetch" href="/MyBlog/assets/js/10.4f6f2f80.js"><link rel="prefetch" href="/MyBlog/assets/js/11.3dd0d6bb.js"><link rel="prefetch" href="/MyBlog/assets/js/13.4a7a2bd8.js"><link rel="prefetch" href="/MyBlog/assets/js/14.fd64b4ff.js"><link rel="prefetch" href="/MyBlog/assets/js/15.0aea93d5.js"><link rel="prefetch" href="/MyBlog/assets/js/17.23dda7fa.js"><link rel="prefetch" href="/MyBlog/assets/js/18.9a90913a.js"><link rel="prefetch" href="/MyBlog/assets/js/19.217ac63a.js"><link rel="prefetch" href="/MyBlog/assets/js/20.e5f657ab.js"><link rel="prefetch" href="/MyBlog/assets/js/21.a7e51597.js"><link rel="prefetch" href="/MyBlog/assets/js/22.4c47086b.js">
+    <link rel="stylesheet" href="/MyBlog/assets/css/23.styles.cc84573a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/MyBlog/" class="home-link router-link-active"><!----><span class="site-name">
+      Meteor
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav><!----></div><div class="page"><div class="content"><h2 id="vue代码复用-mixin用法简述"><a href="#vue代码复用-mixin用法简述" aria-hidden="true" class="header-anchor">#</a> Vue代码复用-Mixin用法简述</h2><blockquote><p>按照个人的理解，Mixin（混入），常用于提高代码复用和方便访问一些全局变量的一个功能。</p><p>Mixin对象内可以包含任何组件选项，当组件使用Mixin对象时，如果组件中有选项的属性与Mixin选项的属性冲突，那么组件中选项的属性优先。</p></blockquote><h3 id="组件级mixin"><a href="#组件级mixin" aria-hidden="true" class="header-anchor">#</a> 组件级Mixin</h3><p><strong>例子</strong>（引用官方）：</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 定义一个混入对象</span>
+<span class="token keyword">var</span> myMixin <span class="token operator">=</span> <span class="token punctuation">{</span>
+  created<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    hello<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello from mixin!'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 定义一个使用混入对象的组件</span>
+<span class="token keyword">var</span> Component <span class="token operator">=</span> Vue<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>myMixin<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> component <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Component</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// =&gt; &quot;hello from mixin!&quot;</span>
+</code></pre></div><p>那么在一个常规项目中，无非就是定义创建Mixin文件夹，根据不同的组件Mixin功能定义不同名字的Mixin，然后将其导出，在组件/路由中引入。</p><p><strong>实际项目例子</strong>：</p><p><em>./mixins/maskMixin</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token function">$_maskMixin_HelloWorld</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token string">'helloWorld'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><em>./container/myVueProject</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+<span class="token keyword">import</span> maskMixin <span class="token keyword">from</span> <span class="token string">'./mixins/maskMixin'</span>
+mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>maskMixin<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token function">mounted</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$_maskMixin_HelloWorld<span class="token punctuation">)</span> <span class="token comment">//helloWorld</span>
+<span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="全局mixin"><a href="#全局mixin" aria-hidden="true" class="header-anchor">#</a> 全局Mixin</h3><p>如果要在所有组件内引入某个特定的Mixin，那会是一件重复度很高的事情，所以就有了全局Mixin</p><p><strong>官方例子：</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 为自定义的选项 'myOption' 注入一个处理器。</span>
+Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  created<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> myOption <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$options<span class="token punctuation">.</span>myOption
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>myOption<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myOption<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  myOption<span class="token punctuation">:</span> <span class="token string">'hello!'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// =&gt; &quot;hello!&quot;</span>
+</code></pre></div><p><strong>实际项目例子：</strong></p><p><em>./Vuex/Common.js</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 模块共享的公共状态
+ * @module modules/aboutUs
+ */</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  version<span class="token punctuation">:</span> <span class="token string">'1.0.0'</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * '关于我们'模块getters状态
+ * @constant getters
+ * @property {string} version -版本号
+ */</span>
+<span class="token keyword">const</span> getters <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 版本号</span>
+  version<span class="token punctuation">:</span> state <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>version<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> actions <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> mutations <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  state<span class="token punctuation">,</span>
+  actions<span class="token punctuation">,</span>
+  mutations<span class="token punctuation">,</span>
+  getters
+<span class="token punctuation">}</span>
+</code></pre></div><p><em>./Vuex/index.js</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> common <span class="token keyword">from</span> <span class="token string">'./common'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  common
+<span class="token punctuation">}</span>
+</code></pre></div><p><em>./mixins/Common.js</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>
+  mapGetters
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    computed<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token operator">...</span><span class="token function">mapGetters</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+        <span class="token string">'version'</span>
+      <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><em>./main.js</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span>
+<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App.vue'</span>
+<span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+<span class="token keyword">import</span> modules <span class="token keyword">from</span> <span class="token string">'./Vuex'</span>
+<span class="token keyword">import</span> CommonMixin <span class="token keyword">from</span> <span class="token string">'./Mixin/Common'</span>
+Vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span>productionTip <span class="token operator">=</span> <span class="token boolean">false</span>
+Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Vuex<span class="token punctuation">)</span>
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modules<span class="token punctuation">,</span>
+  strict<span class="token punctuation">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token function">CommonMixin</span><span class="token punctuation">(</span>Vue<span class="token punctuation">)</span>
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  render<span class="token punctuation">:</span> h <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  store
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre></div><p><em>./某个不知名Vue文件</em></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token function">mounted</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>version<span class="token punctuation">)</span> <span class="token comment">//'1.0.0'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="自定义选项合并策略"><a href="#自定义选项合并策略" aria-hidden="true" class="header-anchor">#</a> 自定义选项合并策略</h3><p>不做详细介绍，需要用到的时候再去看吧。</p><p>简单的说就是：如果自己封的Mixin只有部分不符合自己组件的要求，那么可以通过这个来覆盖传进来的选项。</p><p>详阅：<a href="https://cn.vuejs.org/v2/guide/mixins.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5" target="_blank" rel="noopener noreferrer">自定义选项合并策略<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div><div class="page-edit"><!----><!----></div><!----></div></div></div>
+    <script src="/MyBlog/assets/js/16.205e0222.js" defer></script><script src="/MyBlog/assets/js/app.19eb8d83.js" defer></script>
+  </body>
+</html>

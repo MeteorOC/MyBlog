@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Axios | Meteor</title>
+    <meta name="description" content="欢迎来到我的个人页面">
+    
+    
+    <link rel="preload" href="/MyBlog/assets/css/23.styles.cc84573a.css" as="style"><link rel="preload" href="/MyBlog/assets/js/app.19eb8d83.js" as="script"><link rel="preload" href="/MyBlog/assets/js/2.493d4717.js" as="script"><link rel="prefetch" href="/MyBlog/assets/js/12.53cafe37.js"><link rel="prefetch" href="/MyBlog/assets/js/1.38c1cab2.js"><link rel="prefetch" href="/MyBlog/assets/js/3.fec61410.js"><link rel="prefetch" href="/MyBlog/assets/js/4.7b46e1a9.js"><link rel="prefetch" href="/MyBlog/assets/js/5.a8da7034.js"><link rel="prefetch" href="/MyBlog/assets/js/6.1afa3de3.js"><link rel="prefetch" href="/MyBlog/assets/js/7.bb628056.js"><link rel="prefetch" href="/MyBlog/assets/js/8.4320c542.js"><link rel="prefetch" href="/MyBlog/assets/js/9.ae9485eb.js"><link rel="prefetch" href="/MyBlog/assets/js/10.4f6f2f80.js"><link rel="prefetch" href="/MyBlog/assets/js/11.3dd0d6bb.js"><link rel="prefetch" href="/MyBlog/assets/js/13.4a7a2bd8.js"><link rel="prefetch" href="/MyBlog/assets/js/14.fd64b4ff.js"><link rel="prefetch" href="/MyBlog/assets/js/15.0aea93d5.js"><link rel="prefetch" href="/MyBlog/assets/js/16.205e0222.js"><link rel="prefetch" href="/MyBlog/assets/js/17.23dda7fa.js"><link rel="prefetch" href="/MyBlog/assets/js/18.9a90913a.js"><link rel="prefetch" href="/MyBlog/assets/js/19.217ac63a.js"><link rel="prefetch" href="/MyBlog/assets/js/20.e5f657ab.js"><link rel="prefetch" href="/MyBlog/assets/js/21.a7e51597.js"><link rel="prefetch" href="/MyBlog/assets/js/22.4c47086b.js">
+    <link rel="stylesheet" href="/MyBlog/assets/css/23.styles.cc84573a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/MyBlog/" class="home-link router-link-active"><!----><span class="site-name">
+      Meteor
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav><!----></div><div class="page"><div class="content"><h1 id="axios"><a href="#axios" aria-hidden="true" class="header-anchor">#</a> Axios</h1><h3 id="基于promise且用于node-js和浏览器的http客户端"><a href="#基于promise且用于node-js和浏览器的http客户端" aria-hidden="true" class="header-anchor">#</a> 基于Promise且用于Node.js和浏览器的HTTP客户端</h3><blockquote><p>目前手上的项目，对Ajax请求/响应之后的各种异常状态的响应，需要仔细了解Axios这个Ajax HTTP请求工具的使用方法，在了解的过程中顺便翻译了一下，Axios的文档还是很清晰明了的，看完文档后便可明白：</p></blockquote><ul><li>Axios请求失败后、响应失败后、请求发送前、响应返回后，请求超时时等这些情况的处理(拦截器)</li><li>怎么样对错误进行自定义处理(错误处理)</li><li>如何取消请求(Cancel token)</li><li>可以配置的选项参数(config)</li><li>Axios配置的优先顺序</li><li>async/await在Axios的使用方法</li><li>Axios API的一些别名、缩写</li></ul><blockquote><p><code>注意</code> : Axios中分为两种数据传输的情况，一种是application/x-www-form-urlencoded格式下的params，一种是没有特别指明格式下的data,Axios默认是将数据以json格式传回，如果需要/user?id=xxx这种形式传回的话，则需要在config中添加params字段。</p></blockquote><h3 id="特性："><a href="#特性：" aria-hidden="true" class="header-anchor">#</a> 特性：</h3><ul><li><p>从浏览器生成XMLHttpRequests</p></li><li><p>从Node.js生成http requests</p></li><li><p>支持Promise Api</p></li><li><p>拦截请求和响应</p></li><li><p>转换请求和响应数据(比如说如果拦截到的result data里面还有错误码，则对错误码进行加工来返回一个合理的相应数据，无需在业务代码中调整)</p></li><li><p>关闭请求</p></li><li><p>自动转换JSON格式的数据</p></li><li><p>支持防范XSRF攻击（Client side ：客户端）</p></li></ul><h3 id="浏览器支持"><a href="#浏览器支持" aria-hidden="true" class="header-anchor">#</a> 浏览器支持</h3><table><thead><tr><th><a href="https://camo.githubusercontent.com/26846e979600799e9f4273d38bd9e5cb7bb8d6d0/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f6368726f6d652f6368726f6d655f34387834382e706e67" target="_blank" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/26846e979600799e9f4273d38bd9e5cb7bb8d6d0/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f6368726f6d652f6368726f6d655f34387834382e706e67" alt="Chrome"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></th><th><a href="https://camo.githubusercontent.com/6087557f69ec6585eb7f8d7bd7d9ecb6b7f51ba1/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f66697265666f782f66697265666f785f34387834382e706e67" target="_blank" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/6087557f69ec6585eb7f8d7bd7d9ecb6b7f51ba1/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f66697265666f782f66697265666f785f34387834382e706e67" alt="Firefox"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></th><th><a href="https://camo.githubusercontent.com/6fbaeb334b99e74ddd89190a42766ea3b4600d2c/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f7361666172692f7361666172695f34387834382e706e67" target="_blank" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/6fbaeb334b99e74ddd89190a42766ea3b4600d2c/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f7361666172692f7361666172695f34387834382e706e67" alt="Safari"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></th><th><a href="https://camo.githubusercontent.com/96d2405a936da1fb8988db0c1d304d3db04b8a52/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f6f706572612f6f706572615f34387834382e706e67" target="_blank" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/96d2405a936da1fb8988db0c1d304d3db04b8a52/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f6f706572612f6f706572615f34387834382e706e67" alt="Opera"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></th><th><a href="https://camo.githubusercontent.com/826b3030243b09465bf14cf420704344f5eee991/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f656467652f656467655f34387834382e706e67" target="_blank" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/826b3030243b09465bf14cf420704344f5eee991/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f656467652f656467655f34387834382e706e67" alt="Edge"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></th><th><a href="https://camo.githubusercontent.com/4b062fb12353b0ef8420a72ddc3debf6b2ee5747/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f617263686976652f696e7465726e65742d6578706c6f7265725f392d31312f696e7465726e65742d6578706c6f7265725f392d31315f34387834382e706e67" target="_blank" rel="noopener noreferrer"><img src="https://camo.githubusercontent.com/4b062fb12353b0ef8420a72ddc3debf6b2ee5747/68747470733a2f2f7261772e6769746875622e636f6d2f616c7272612f62726f777365722d6c6f676f732f6d61737465722f7372632f617263686976652f696e7465726e65742d6578706c6f7265725f392d31312f696e7465726e65742d6578706c6f7265725f392d31315f34387834382e706e67" alt="IE"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></th></tr></thead><tbody><tr><td>Latest ✔</td><td>Latest ✔</td><td>Latest ✔</td><td>Latest ✔</td><td>Latest ✔</td><td>11 ✔</td></tr></tbody></table><p><img src="https://camo.githubusercontent.com/626c46cfd86214001b4143cda5d0ef27a25bd69f/68747470733a2f2f73617563656c6162732e636f6d2f6f70656e5f73617563652f6275696c645f6d61747269782f6178696f732e737667" alt="Browser Matrix"></p><h2 id="使用方法："><a href="#使用方法：" aria-hidden="true" class="header-anchor">#</a> 使用方法：</h2><p>使用 npm:</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>$ npm install axios
+</code></pre></div><p>使用 浏览器:</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>$ bower install axios
+</code></pre></div><p>从 CDN引入:</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">&quot;https://unpkg.com/axios/dist/axios.min.js&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="举个栗子："><a href="#举个栗子：" aria-hidden="true" class="header-anchor">#</a> 举个栗子：</h3><h4 id="执行一个get请求："><a href="#执行一个get请求：" aria-hidden="true" class="header-anchor">#</a> 执行一个GET请求：</h4><p>(Performing a <code>GET</code> request ------Performe [v] 表演、履行、办理，句子可以还原为Performing a GET request,the axios began do this.由主语axios发出的主动动作。如果动词和句子主语关系是被动的时候，就用ed形式，如果动词和句子主语是主动关系，同时暗含某种目的、计划等，用to do。同时ing形式成为动名词时，兼具动词和名次的特点。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'axios'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 一个带query参数的用户请求</span>
+axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user?ID=12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 处理成功时的情况</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 处理失败时的情况</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 总是执行</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Optionally the request above could also be done as</span>
+<span class="token comment">// 以上的请求也可以像下面这样加入可选的参数</span>
+axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    params<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token constant">ID</span><span class="token punctuation">:</span> <span class="token number">12345</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 总是执行</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+
+<span class="token comment">// 想使用 async/await?</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user?ID=12345'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>注意:</strong><code>async/await</code> 是ES2017的一部分且不被IE和比较远古的浏览器所支持, 使用的时候注意一下。</p><h4 id="执行多个并发请求："><a href="#执行多个并发请求：" aria-hidden="true" class="header-anchor">#</a> 执行多个并发请求：</h4><p>(multiple [adj] 众多的、复杂/复合的、多种、concurrent [adj] 合流的 译为并发)</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">getUserAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getUserPermissions</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345/permissions'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+axios<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token function">getUserAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">getUserPermissions</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>axios<span class="token punctuation">.</span><span class="token function">spread</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>acct<span class="token punctuation">,</span> perms<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Both requests are now complete</span>
+    <span class="token comment">// 两个请求现在已经完成</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="axios-api"><a href="#axios-api" aria-hidden="true" class="header-anchor">#</a> Axios API</h3><p>可以通过将相关配置传递给axios来进行请求</p><p>（relevant [adj] 相应的、贴题的、pass [v] 通过、经过、传递）</p><h5 id="axios-config"><a href="#axios-config" aria-hidden="true" class="header-anchor">#</a> axios(config)</h5><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Send a POST request</span>
+<span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  method<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+  url<span class="token punctuation">:</span> <span class="token string">'/user/12345'</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token punctuation">:</span> <span class="token string">'Fred'</span><span class="token punctuation">,</span>
+    lastName<span class="token punctuation">:</span> <span class="token string">'Flintstone'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// GET request for remote image</span>
+<span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  method<span class="token punctuation">:</span><span class="token string">'get'</span><span class="token punctuation">,</span>
+  url<span class="token punctuation">:</span><span class="token string">'http://bit.ly/2mTM3nY'</span><span class="token punctuation">,</span>
+  responseType<span class="token punctuation">:</span><span class="token string">'stream'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    response<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">pipe</span><span class="token punctuation">(</span>fs<span class="token punctuation">.</span><span class="token function">createWriteStream</span><span class="token punctuation">(</span><span class="token string">'ada_lovelace.jpg'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h5 id="axios-url-config"><a href="#axios-url-config" aria-hidden="true" class="header-anchor">#</a> axios(url[, config])</h5><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Send a GET request (default method)</span>
+<span class="token function">axios</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="请求方法别名："><a href="#请求方法别名：" aria-hidden="true" class="header-anchor">#</a> 请求方法别名：</h4><p>(alias [n] 别名，绰号)</p><ul><li><h5 id="axios-request-config"><a href="#axios-request-config" aria-hidden="true" class="header-anchor">#</a> axios.request(config)</h5></li><li><h5 id="axios-get-url-config"><a href="#axios-get-url-config" aria-hidden="true" class="header-anchor">#</a> axios.get(url[, config])</h5></li><li><h5 id="axios-delete-url-config"><a href="#axios-delete-url-config" aria-hidden="true" class="header-anchor">#</a> axios.delete(url[, config])</h5></li><li><h5 id="axios-head-url-config"><a href="#axios-head-url-config" aria-hidden="true" class="header-anchor">#</a> axios.head(url[, config])</h5></li><li><h5 id="axios-options-url-config"><a href="#axios-options-url-config" aria-hidden="true" class="header-anchor">#</a> axios.options(url[, config])</h5></li><li><h5 id="axios-post-url-data-config"><a href="#axios-post-url-data-config" aria-hidden="true" class="header-anchor">#</a> axios.post(url[, data[, config]])</h5></li><li><h5 id="axios-put-url-data-config"><a href="#axios-put-url-data-config" aria-hidden="true" class="header-anchor">#</a> axios.put(url[, data[, config]])</h5></li><li><h5 id="axios-patch-url-data-config"><a href="#axios-patch-url-data-config" aria-hidden="true" class="header-anchor">#</a> axios.patch(url[, data[, config]])</h5></li></ul><h6 id="注意："><a href="#注意：" aria-hidden="true" class="header-anchor">#</a> 注意：</h6><p>在方法中使用 <code>url</code>, <code>method</code>, 和 <code>data</code> 别名时，这三个特性无需在config特别声明</p><p>(specify [v] 规定、提起)</p><h4 id="并发："><a href="#并发：" aria-hidden="true" class="header-anchor">#</a> 并发：</h4><p><strong>Axios提供整合好的API来处理并发的请求</strong></p><ul><li><h5 id="axios-spread-callback"><a href="#axios-spread-callback" aria-hidden="true" class="header-anchor">#</a> axios.spread(callback)</h5></li><li><h5 id="axios-all-iterable"><a href="#axios-all-iterable" aria-hidden="true" class="header-anchor">#</a> axios.all(iterable)</h5></li></ul><h4 id="创建实例："><a href="#创建实例：" aria-hidden="true" class="header-anchor">#</a> 创建实例：</h4><p>你可以使用自定义配置创建一个新的axios实例</p><p>(custom [adj] 自定义的)</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> instance <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token punctuation">:</span> <span class="token string">'https://some-domain.com/api/'</span><span class="token punctuation">,</span>
+  timeout<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+  headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'X-Custom-Header'</span><span class="token punctuation">:</span> <span class="token string">'foobar'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="实例方法："><a href="#实例方法：" aria-hidden="true" class="header-anchor">#</a> 实例方法：</h4><p>下面列出了可用的实例方法，指定的配置将与实例的配置合并</p><ul><li><h5 id="axios-request-config-2"><a href="#axios-request-config-2" aria-hidden="true" class="header-anchor">#</a> axios#request(config)</h5></li><li><h5 id="axios-delete-url-config-2"><a href="#axios-delete-url-config-2" aria-hidden="true" class="header-anchor">#</a> axios#delete(url[, config])</h5></li><li><h5 id="axios-head-url-config-2"><a href="#axios-head-url-config-2" aria-hidden="true" class="header-anchor">#</a> axios#head(url[, config])</h5></li><li><h5 id="axios-options-url-config-2"><a href="#axios-options-url-config-2" aria-hidden="true" class="header-anchor">#</a> axios#options(url[, config])</h5></li><li><h5 id="axios-post-url-data-config-2"><a href="#axios-post-url-data-config-2" aria-hidden="true" class="header-anchor">#</a> axios#post(url[, data[, config]])</h5></li><li><h5 id="axios-put-url-data-config-2"><a href="#axios-put-url-data-config-2" aria-hidden="true" class="header-anchor">#</a> axios#put(url[, data[, config]])</h5></li><li><h5 id="axios-patch-url-data-config-2"><a href="#axios-patch-url-data-config-2" aria-hidden="true" class="header-anchor">#</a> axios#patch(url[, data[, config]])</h5></li><li><h5 id="axios-geturi-config-axios-get-url-config"><a href="#axios-geturi-config-axios-get-url-config" aria-hidden="true" class="header-anchor">#</a> axios#getUri([config])axios#get(url[, config])</h5></li></ul><h4 id="请求方法："><a href="#请求方法：" aria-hidden="true" class="header-anchor">#</a> 请求方法：</h4><p>下面列出的是请求时可用的配置选项，只有<code>url</code>是必须的配置选项，当配置里面没有指定请求方法的时候默认为<code>GET</code></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token comment">// 请求的url，必填项</span>
+  url<span class="token punctuation">:</span> <span class="token string">'/user'</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// 请求方法，无该字段则默认为GET</span>
+  method<span class="token punctuation">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span> <span class="token comment">// default</span>
+
+  <span class="token comment">// `baseURL` 将被加在`url`字段的前面与`url`字符串拼接，除非`url`为绝对路径(be prepended to被添加到)</span>
+  <span class="token comment">// 有了`baseUrl`的存在为axios实例设置`baseURL`以传递相对URL可能会很方便(be convenient to 方便某事)</span>
+  baseURL<span class="token punctuation">:</span> <span class="token string">'https://some-domain.com/api/'</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `transformRequest` 允许在将请求数据发送到服务器之前对其进行更改</span>
+  <span class="token comment">// `transformRequest` 仅适用（applicable）于'PUT','POST'和'PATCH'请求</span>
+  <span class="token comment">// 数组中的最后一个函数必须返回一个字符串或者一个Buffer实例</span>
+  <span class="token comment">// FormData 或者 Stream的时候，你可能需要修改headers对象</span>
+  transformRequest<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">,</span> headers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 关于数据转换的函数</span>
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `transformResponse` 允许response数据在服务器传回后在`transformResponse`函数中先预处理。</span>
+  <span class="token comment">// 可被then/catch传递</span>
+  transformResponse<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token keyword">function</span> <span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 关于数据转换的函数</span>
+    <span class="token keyword">return</span> data<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `headers` 可被自定义</span>
+  headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token string">'X-Requested-With'</span><span class="token punctuation">:</span> <span class="token string">'XMLHttpRequest'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `params` 和请求一起发送的url参数，常用于application/x-www-form-urlencoded格式下，传输的数据形式为url?params</span>
+  <span class="token comment">// 必须是一个普通对象或者URLSearchParams对象</span>
+  params<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token constant">ID</span><span class="token punctuation">:</span> <span class="token number">12345</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `paramsSerializer` 是一个负责序列化转换的可选功能 `params`</span>
+  <span class="token comment">// (e.g. https://www.npmjs.com/package/qs, http://api.jquery.com/jquery.param/)</span>
+  paramsSerializer<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> Qs<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>params<span class="token punctuation">,</span> <span class="token punctuation">{</span>arrayFormat<span class="token punctuation">:</span> <span class="token string">'brackets'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `data` 是要作为请求正文发送的数据</span>
+  <span class="token comment">// 仅适用于'PUT', 'POST', 和 'PATCH'方法</span>
+  <span class="token comment">// 当没有设置 `transformRequest`时, 其必须为以下类型之一:</span>
+  <span class="token comment">// - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams</span>
+  <span class="token comment">// - Browser only: FormData, File, Blob</span>
+  <span class="token comment">// - Node only: Stream, Buffer</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token punctuation">:</span> <span class="token string">'Fred'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `timeout` 指定服务器请求超时时间之前的的超时毫秒数</span>
+  <span class="token comment">// 如果请求时长超过 `timeout`的设定值, 该请求将被中止.</span>
+  timeout<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token comment">// 默认为 `0` (没有超时时间)</span>
+
+  <span class="token comment">// `withCredentials` indicates whether or not cross-site Access-Control requests</span>
+  <span class="token comment">// `withCredentials`表示是否跨域访问控制请求</span>
+  <span class="token comment">// 应该使用凭证</span>
+  withCredentials<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// default</span>
+
+  <span class="token comment">// `adapter` 允许自定义处理请求，使测试更容易</span>
+  <span class="token comment">// Return a promise and supply a valid response (see lib/adapters/README.md).</span>
+  <span class="token comment">// 返回一个promise并提供一个有效的响应(查看 lib/adapters/README.md)</span>
+  adapter<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>config<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `auth` 表示应该使用HTTP Basic身份验证，并提供凭据.</span>
+  <span class="token comment">// 这将会设置一个 `Authorization` header, 覆盖任何现有的header</span>
+  <span class="token comment">// `Authorization` 是您已设置的自定义 `headers`.</span>
+  auth<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token string">'janedoe'</span><span class="token punctuation">,</span>
+    password<span class="token punctuation">:</span> <span class="token string">'s00pers3cret'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `responseType` 表示服务器将响应的数据类型</span>
+  <span class="token comment">// 可选项为 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'</span>
+  responseType<span class="token punctuation">:</span> <span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token comment">// 默认为json格式</span>
+  <span class="token comment">// `responseEncoding` 表示用于解码response的编码</span>
+  <span class="token comment">// Note: 忽略'stream' 或者 client-side 请求的`responseType`</span>
+  responseEncoding<span class="token punctuation">:</span> <span class="token string">'utf8'</span><span class="token punctuation">,</span> <span class="token comment">// 默认为utf8</span>
+
+  <span class="token comment">// `xsrfCookieName` 是用作xsrf token值的cookie名称</span>
+  xsrfCookieName<span class="token punctuation">:</span> <span class="token string">'XSRF-TOKEN'</span><span class="token punctuation">,</span> <span class="token comment">// 默认为XSRF-TOKEN</span>
+
+  <span class="token comment">// `xsrfHeaderName` is the name of the http header that carries the xsrf token value</span>
+  <span class="token comment">// `xsrHeaderName`是带有xsrf token值的http header的名称</span>
+  xsrfHeaderName<span class="token punctuation">:</span> <span class="token string">'X-XSRF-TOKEN'</span><span class="token punctuation">,</span> <span class="token comment">// 默认为X-XSRF-TOKEN</span>
+
+  <span class="token comment">// `onUploadProgress` allows handling of progress events for uploads</span>
+  <span class="token comment">// `onUploadProgress`允许处理上传的进度事件</span>
+  onUploadProgress<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>progressEvent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Do whatever you want with the native progress event</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `onDownloadProgress` allows handling of progress events for downloads</span>
+  <span class="token comment">// `onDownloadProgress` 允许处理下载的进度事件</span>
+  onDownloadProgress<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>progressEvent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Do whatever you want with the native progress event</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `maxContentLength` defines the max size of the http response content in bytes allowed</span>
+  <span class="token comment">// `maxContentLength` 定义http相应内容的最大大小(单位:字节bytes)</span>
+  maxContentLength<span class="token punctuation">:</span> <span class="token number">2000</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `validateStatus` defines whether to resolve or reject the promise for a given</span>
+  <span class="token comment">// `validateStatus` 定义是否resolve或reject给定的promise</span>
+  <span class="token comment">// HTTP response status code. If `validateStatus` returns `true` (or is set to `null`</span>
+  <span class="token comment">// or `undefined`), the promise will be resolved; otherwise, the promise will be</span>
+  <span class="token comment">// rejected.</span>
+  <span class="token comment">// HTTP响应状态码，如果validateStatus返回为true/null/undefined，promise将会被resolved，否则，promise将会被rejected</span>
+  validateStatus<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>status<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> status <span class="token operator">&gt;=</span> <span class="token number">200</span> <span class="token operator">&amp;&amp;</span> status <span class="token operator">&lt;</span> <span class="token number">300</span><span class="token punctuation">;</span> <span class="token comment">// default</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `maxRedirects` defines the maximum number of redirects to follow in node.js.</span>
+  <span class="token comment">// `maxRedirects` 定义在node.js环境中要遵循的最大重定向数</span>
+  <span class="token comment">// If set to 0, no redirects will be followed.</span>
+  <span class="token comment">// 如果设置为0，则没有重定向将会被执行</span>
+  maxRedirects<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token comment">// default</span>
+
+  <span class="token comment">// `socketPath` defines a UNIX Socket to be used in node.js.</span>
+  <span class="token comment">// e.g. '/var/run/docker.sock' to send requests to the docker daemon.</span>
+  <span class="token comment">// Only either `socketPath` or `proxy` can be specified.</span>
+  <span class="token comment">// If both are specified, `socketPath` is used.</span>
+  <span class="token comment">// `socketPath`定义了一个在Node.js使用的Unix Socket，比如说 '/var/run/docker.sock'将会被请求发送到docker daemon，只能指定socketPath或者proxy中的一项，如果都指定了，那么以socketPath为准。</span>
+  socketPath<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment">// default</span>
+
+  <span class="token comment">// `httpAgent` and `httpsAgent` define a custom agent to be used when performing http</span>
+  <span class="token comment">// and https requests, respectively, in node.js. This allows options to be added like</span>
+  <span class="token comment">// `keepAlive` that are not enabled by default.</span>
+  <span class="token comment">// 定义了执行http时要使用的自定义代理和Node.js中的https请求，允许像keepAlive这样的可选字段加入(keepAlive默认情况下不启用)</span>
+  httpAgent<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">http<span class="token punctuation">.</span>Agent</span><span class="token punctuation">(</span><span class="token punctuation">{</span> keepAlive<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  httpsAgent<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">https<span class="token punctuation">.</span>Agent</span><span class="token punctuation">(</span><span class="token punctuation">{</span> keepAlive<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// 'proxy' defines the hostname and port of the proxy server.</span>
+  <span class="token comment">// You can also define your proxy using the conventional `http_proxy` and</span>
+  <span class="token comment">// `https_proxy` environment variables. If you are using environment variables</span>
+  <span class="token comment">// for your proxy configuration, you can also define a `no_proxy` environment</span>
+  <span class="token comment">// variable as a comma-separated list of domains that should not be proxied.</span>
+  <span class="token comment">// Use `false` to disable proxies, ignoring environment variables.</span>
+  <span class="token comment">// `auth` indicates that HTTP Basic auth should be used to connect to the proxy, and</span>
+  <span class="token comment">// supplies credentials.</span>
+  <span class="token comment">// This will set an `Proxy-Authorization` header, overwriting any existing</span>
+  <span class="token comment">// `Proxy-Authorization` custom headers you have set using `headers`.</span>
+  <span class="token comment">// 定义代理服务器的主机名和端口</span>
+  <span class="token comment">// 你可以使用传统的`http_proxy`和`https_proxy`环境变量来定义代理。 如果你使用环境变量进行代理配置，则还可以定义“no_proxy”环境</span>
+  <span class="token comment">// 变量作为不应被代理的以逗号分隔的域列表。</span>
+  <span class="token comment">// 使用`false`来禁用代理，忽略环境变量。</span>
+  <span class="token comment">//`auth`表示HTTP Basic auth应该用于连接代理，并提供凭证。这将设置一个`Proxy-Authorization` header，覆盖你用`header`设置的任何现有`Proxy-Authorization`自定义header文件。</span>
+  proxy<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    host<span class="token punctuation">:</span> <span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span>
+    port<span class="token punctuation">:</span> <span class="token number">9000</span><span class="token punctuation">,</span>
+    auth<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      username<span class="token punctuation">:</span> <span class="token string">'mikeymike'</span><span class="token punctuation">,</span>
+      password<span class="token punctuation">:</span> <span class="token string">'rapunz3l'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `cancelToken` 指明一个可以被用于取消请求的 cancel token</span>
+  <span class="token comment">// (查看 Cancellation 段落下的细节)</span>
+  cancelToken<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">CancelToken</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>cancel<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="response："><a href="#response：" aria-hidden="true" class="header-anchor">#</a> Response：</h4><p>response包含以下信息：</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token comment">// `data` is the response that was provided by the server</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `status` is the HTTP status code from the server response</span>
+  status<span class="token punctuation">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `statusText` is the HTTP status message from the server response</span>
+  statusText<span class="token punctuation">:</span> <span class="token string">'OK'</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `headers` the headers that the server responded with</span>
+  <span class="token comment">// All header names are lower cased</span>
+  headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `config` is the config that was provided to `axios` for the request</span>
+  config<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token comment">// `request` is the request that generated this response</span>
+  <span class="token comment">// It is the last ClientRequest instance in node.js (in redirects)</span>
+  <span class="token comment">// and an XMLHttpRequest instance the browser</span>
+  request<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>当使用<code>then</code>的时候，则会收到如下response</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>statusText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>当使用catch或传递 rejection callback 作为当时的第二个参数时，response将通过error对象提供，如“<a href="https://github.com/axios/axios#handling-errors" target="_blank" rel="noopener noreferrer">Handling Errors<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>”部分中所述。</p><h4 id="默认配置："><a href="#默认配置：" aria-hidden="true" class="header-anchor">#</a> 默认配置：</h4><p>你可以指定一个被所有的请求使用的默认配置</p><h5 id="axios全局默认配置"><a href="#axios全局默认配置" aria-hidden="true" class="header-anchor">#</a> Axios全局默认配置</h5><div class="language-javascript extra-class"><pre class="language-javascript"><code>axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>baseURL <span class="token operator">=</span> <span class="token string">'https://api.example.com'</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>common<span class="token punctuation">[</span><span class="token string">'Authorization'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token constant">AUTH_TOKEN</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>post<span class="token punctuation">[</span><span class="token string">'Content-Type'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'application/x-www-form-urlencoded'</span><span class="token punctuation">;</span>
+</code></pre></div><h5 id="自定义的实例默认配置"><a href="#自定义的实例默认配置" aria-hidden="true" class="header-anchor">#</a> 自定义的实例默认配置</h5><div class="language- extra-class"><pre class="language-text"><code>// Set config defaults when creating the instance
+const instance = axios.create({
+  baseURL: 'https://api.example.com'
+});
+
+// Alter defaults after instance has been created
+instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+</code></pre></div><h5 id="配置的优先权顺序"><a href="#配置的优先权顺序" aria-hidden="true" class="header-anchor">#</a> 配置的优先权顺序</h5><p>1.Axios默认配置(存储于lib/defaults.js)</p><p>2.实例的默认配置</p><p>3.Axios请求时附加的配合</p><p>优先权逐级上升，优先权低的配置会被高配置所覆盖/合并。</p><h4 id="拦截器："><a href="#拦截器：" aria-hidden="true" class="header-anchor">#</a> 拦截器：</h4><p>你可以在请求或者响应被<code>then</code>或者<code>catch</code>处理之前拦截他们并在方法中做一些事情</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 加入请求的拦截器</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>config<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在请求发送之前做些什么</span>
+    <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在请求失败的时候做些什么</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 加入响应的拦截器</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在响应成功的时候做些什么</span>
+    <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在响应错误的时候做些什么</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>如果你需要删除掉拦截器那么在调用完成后你可以：</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> myInterceptor <span class="token operator">=</span> axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/*...*/</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">eject</span><span class="token punctuation">(</span>myInterceptor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>你可以添加拦截器到自定义的axios实例</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> instance <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+instance<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">/*...*/</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="处理错误："><a href="#处理错误：" aria-hidden="true" class="header-anchor">#</a> 处理错误：</h4><div class="language-javascript extra-class"><pre class="language-javascript"><code>axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// The request was made and the server responded with a status code</span>
+      <span class="token comment">// 请求已完成，服务器响应状态代码</span>
+      <span class="token comment">// that falls out of the range of 2xx</span>
+      <span class="token comment">// code码超出了2xx的范围</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>response<span class="token punctuation">.</span>headers<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// The request was made but no response was received</span>
+      <span class="token comment">// 请求了但是没有收到任何回复</span>
+      <span class="token comment">// `error.request` is an instance of XMLHttpRequest in the browser and an instance of</span>
+      <span class="token comment">// `error.request`是浏览器中XMLHttpRequest的一个实例</span>
+      <span class="token comment">// http.ClientRequest in node.js</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token comment">// Something happened in setting up the request that triggered an Error</span>
+      <span class="token comment">// 如果没有error.response，那么应该会有一个关于错误的message值传回来作为错误解释</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Error'</span><span class="token punctuation">,</span> error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>你可以使用ValidateStatus配置选项定义一个自定义的HTTP状态码错误范围：</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  validateStatus<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>status<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> status <span class="token operator">&lt;</span> <span class="token number">500</span><span class="token punctuation">;</span> <span class="token comment">// 仅在状态大于或等于500时拒绝</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="取消请求："><a href="#取消请求：" aria-hidden="true" class="header-anchor">#</a> 取消请求：</h4><p>你可以使用<em>cancel token</em>来取消一个请求</p><p>Axios cancel token API基于withdrawn <a href="https://github.com/tc39/proposal-cancelable-promises" target="_blank" rel="noopener noreferrer">cancelable promises proposal<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p><p>你可以使用CancelToken.source工厂创建或者删除token，如下所示</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> CancelToken <span class="token operator">=</span> axios<span class="token punctuation">.</span>CancelToken<span class="token punctuation">;</span>
+<span class="token keyword">const</span> source <span class="token operator">=</span> CancelToken<span class="token punctuation">.</span><span class="token function">source</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  cancelToken<span class="token punctuation">:</span> source<span class="token punctuation">.</span>token
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>thrown<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>axios<span class="token punctuation">.</span><span class="token function">isCancel</span><span class="token punctuation">(</span>thrown<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request canceled'</span><span class="token punctuation">,</span> thrown<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 处理错误</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'new name'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  cancelToken<span class="token punctuation">:</span> source<span class="token punctuation">.</span>token
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 关闭请求 (the message parameter is optional  message参数是可选的)</span>
+source<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token string">'Operation canceled by the user.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>你还可以通过执行函数传递给CancelToken constructor(构造函数)来创建或者取消token</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> CancelToken <span class="token operator">=</span> axios<span class="token punctuation">.</span>CancelToken<span class="token punctuation">;</span>
+<span class="token keyword">let</span> cancel<span class="token punctuation">;</span>
+
+axios<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/12345'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  cancelToken<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">CancelToken</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token function">executor</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 执行函数收到一个取消的函数作为参数</span>
+    cancel <span class="token operator">=</span> c<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 关闭请求</span>
+<span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p><em>注意</em>：你可以使用相同的cancel token 来取消多个请求</p><h4 id="使用application-x-www-form-urlencoded格式-url传参"><a href="#使用application-x-www-form-urlencoded格式-url传参" aria-hidden="true" class="header-anchor">#</a> 使用application/x-www-form-urlencoded格式(url传参)</h4><p>Axios会默认将JS中的object对象序列化为JSON格式的数据。如果你使用application/x-www-form-urlencoded格式发送数据，你可以使用以下选项之一。</p><h5 id="浏览器："><a href="#浏览器：" aria-hidden="true" class="header-anchor">#</a> 浏览器：</h5><p>在浏览器中，你可以使用<a href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams" target="_blank" rel="noopener noreferrer"><code>URLSearchParams</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>API如下所示:</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URLSearchParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'param1'</span><span class="token punctuation">,</span> <span class="token string">'value1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'param2'</span><span class="token punctuation">,</span> <span class="token string">'value2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/foo'</span><span class="token punctuation">,</span> params<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>请注意：并非所有浏览器都支持URLSearchParams（请参阅<a href="http://www.caniuse.com/#feat=urlsearchparams" target="_blank" rel="noopener noreferrer">caniuse.com<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>），但有可用的<a href="https://github.com/WebReflection/url-search-params" target="_blank" rel="noopener noreferrer">polyfill<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>（确保填充全局环境）。</p><h5 id="另外，你可以使用qs数据库对数据进行编码"><a href="#另外，你可以使用qs数据库对数据进行编码" aria-hidden="true" class="header-anchor">#</a> 另外，你可以使用<a href="https://github.com/ljharb/qs" target="_blank" rel="noopener noreferrer"><code>qs</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>数据库对数据进行编码:</h5><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> qs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'qs'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/foo'</span><span class="token punctuation">,</span> qs<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">'bar'</span><span class="token punctuation">:</span> <span class="token number">123</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h5 id="或者，使用es6"><a href="#或者，使用es6" aria-hidden="true" class="header-anchor">#</a> 或者，使用ES6:</h5><div class="language- extra-class"><pre class="language-text"><code>import qs from 'qs';
+const data = { 'bar': 123 };
+const options = {
+  method: 'POST',
+  headers: { 'content-type': 'application/x-www-form-urlencoded' },
+  data: qs.stringify(data),
+  url,
+};
+axios(options);
+</code></pre></div><h4 id="node-js"><a href="#node-js" aria-hidden="true" class="header-anchor">#</a> Node.js</h4><p>在node.js中，你可以使用querystring模块如下所示:</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> querystring <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'querystring'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'http://something.com/'</span><span class="token punctuation">,</span> querystring<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>可以使用<a href="https://github.com/ljharb/qs" target="_blank" rel="noopener noreferrer"><code>qs</code><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>数据库</p><h4 id="promises"><a href="#promises" aria-hidden="true" class="header-anchor">#</a> Promises</h4><p>axios依赖于支持的本机ES6 Promise实现。 如果你的环境不支持ES6 Promises，您可以<a href="https://github.com/jakearchibald/es6-promise" target="_blank" rel="noopener noreferrer">polyfill<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p></div><div class="page-edit"><!----><!----></div><!----></div></div></div>
+    <script src="/MyBlog/assets/js/2.493d4717.js" defer></script><script src="/MyBlog/assets/js/app.19eb8d83.js" defer></script>
+  </body>
+</html>

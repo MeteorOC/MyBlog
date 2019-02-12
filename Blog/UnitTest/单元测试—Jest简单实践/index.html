@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>单元测试—Jest 简单实践 | Meteor</title>
+    <meta name="description" content="欢迎来到我的个人页面">
+    
+    
+    <link rel="preload" href="/MyBlog/assets/css/23.styles.cc84573a.css" as="style"><link rel="preload" href="/MyBlog/assets/js/app.19eb8d83.js" as="script"><link rel="preload" href="/MyBlog/assets/js/11.3dd0d6bb.js" as="script"><link rel="prefetch" href="/MyBlog/assets/js/12.53cafe37.js"><link rel="prefetch" href="/MyBlog/assets/js/1.38c1cab2.js"><link rel="prefetch" href="/MyBlog/assets/js/2.493d4717.js"><link rel="prefetch" href="/MyBlog/assets/js/3.fec61410.js"><link rel="prefetch" href="/MyBlog/assets/js/4.7b46e1a9.js"><link rel="prefetch" href="/MyBlog/assets/js/5.a8da7034.js"><link rel="prefetch" href="/MyBlog/assets/js/6.1afa3de3.js"><link rel="prefetch" href="/MyBlog/assets/js/7.bb628056.js"><link rel="prefetch" href="/MyBlog/assets/js/8.4320c542.js"><link rel="prefetch" href="/MyBlog/assets/js/9.ae9485eb.js"><link rel="prefetch" href="/MyBlog/assets/js/10.4f6f2f80.js"><link rel="prefetch" href="/MyBlog/assets/js/13.4a7a2bd8.js"><link rel="prefetch" href="/MyBlog/assets/js/14.fd64b4ff.js"><link rel="prefetch" href="/MyBlog/assets/js/15.0aea93d5.js"><link rel="prefetch" href="/MyBlog/assets/js/16.205e0222.js"><link rel="prefetch" href="/MyBlog/assets/js/17.23dda7fa.js"><link rel="prefetch" href="/MyBlog/assets/js/18.9a90913a.js"><link rel="prefetch" href="/MyBlog/assets/js/19.217ac63a.js"><link rel="prefetch" href="/MyBlog/assets/js/20.e5f657ab.js"><link rel="prefetch" href="/MyBlog/assets/js/21.a7e51597.js"><link rel="prefetch" href="/MyBlog/assets/js/22.4c47086b.js">
+    <link rel="stylesheet" href="/MyBlog/assets/css/23.styles.cc84573a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/MyBlog/" class="home-link router-link-active"><!----><span class="site-name">
+      Meteor
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav><!----></div><div class="page"><div class="content"><h2 id="单元测试—jest-简单实践"><a href="#单元测试—jest-简单实践" aria-hidden="true" class="header-anchor">#</a> 单元测试—Jest 简单实践</h2><h3 id="前言："><a href="#前言：" aria-hidden="true" class="header-anchor">#</a> 前言：</h3><p>单元测试主要是测函数给定输入时是否会输出与预期相符的产物，同时也能帮我们检测一些文件引入、调用的错误。</p><p>对于 Vue 模块来说，其作用可能并不是那么大，不过对于自定义的公共函数来说，意义还是明显，建议各位多少使用一点。</p><h3 id="start："><a href="#start：" aria-hidden="true" class="header-anchor">#</a> Start：</h3><h4 id="_1-可以使用yarn或者npm安装，按个人喜好，本人喜欢用yarn"><a href="#_1-可以使用yarn或者npm安装，按个人喜好，本人喜欢用yarn" aria-hidden="true" class="header-anchor">#</a> 1.可以使用<code>yarn</code>或者<code>npm</code>安装，按个人喜好，本人喜欢用<code>yarn</code></h4><div class="language-bash extra-class"><pre class="language-bash"><code>yarn add -D jest
+//Or
+<span class="token function">npm</span> <span class="token function">install</span> --save-dev jest
+</code></pre></div><p>安装完成，目录下多了个 jest.config.js 文件，里面是<code>Jest</code>的 config。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  moduleFileExtensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'js'</span><span class="token punctuation">,</span> <span class="token string">'jsx'</span><span class="token punctuation">,</span> <span class="token string">'json'</span><span class="token punctuation">,</span> <span class="token string">'vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  transform<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'^.+\\.vue$'</span><span class="token punctuation">:</span> <span class="token string">'vue-jest'</span><span class="token punctuation">,</span>
+    <span class="token string">'.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$'</span><span class="token punctuation">:</span> <span class="token string">'jest-transform-stub'</span><span class="token punctuation">,</span>
+    <span class="token string">'^.+\\.jsx?$'</span><span class="token punctuation">:</span> <span class="token string">'babel-jest'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  moduleNameMapper<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'^@/(.*)$'</span><span class="token punctuation">:</span> <span class="token string">'&lt;rootDir&gt;/src/$1'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  snapshotSerializers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'jest-serializer-vue'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  testMatch<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  testURL<span class="token punctuation">:</span> <span class="token string">'http://localhost/'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>Jest</code>单元测试默认是测试你的 Project <code>src/test/unit</code>目录下经过你个人编写的测试文件，文件名字格式如：<code>xx.spec.js|jsx|ts|tsx</code></p><p>可以通过<code>testMatch</code>一项来配置自定义的路径，其它的配置也可以在这里修改，如果<code>Jest</code>测试过程中有什么不可预知的错误，其提示的 config，一般指的就是<code>jest.config.js</code>文件。</p><h4 id="_2-将下面的配置部分添加到-package-json-中："><a href="#_2-将下面的配置部分添加到-package-json-中：" aria-hidden="true" class="header-anchor">#</a> 2.将下面的配置部分添加到 package.json 中：</h4><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token string">&quot;scripts&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">&quot;test&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;jest&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这时使用<code>yarn test</code>即可启动<code>Jest</code>进行测试。</p><blockquote><p>使用了 Eslint 的朋友，请在<code>.eslintrc.js</code>中<code>env</code>对象中配<code>jest: true</code>，使得 Eslint 在对<code>Jest</code>测试文件的检测中不报错。</p></blockquote><h4 id="_3-开始编写你的测试脚本"><a href="#_3-开始编写你的测试脚本" aria-hidden="true" class="header-anchor">#</a> 3.开始编写你的测试脚本</h4><p>举个例子：<strong>tests/unit/test.sepc.js</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> buildErrorMessage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/Utils/Axios/utils'</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'测试buildErrorMessage函数输出是否与预期相符'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">=</span> <span class="token string">'production'</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">buildErrorMessage</span><span class="token punctuation">(</span><span class="token string">'you'</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'糟糕！服务器被怪兽吃掉啦QAQ'</span><span class="token punctuation">)</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">buildErrorMessage</span><span class="token punctuation">(</span><span class="token string">'你'</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'你'</span><span class="token punctuation">)</span>
+  process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">=</span> <span class="token string">'development'</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">buildErrorMessage</span><span class="token punctuation">(</span><span class="token string">'you'</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'糟糕！服务器被怪兽吃掉啦QAQ(200)'</span><span class="token punctuation">)</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">buildErrorMessage</span><span class="token punctuation">(</span><span class="token string">'你'</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'你(200)'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>src/Utils/Axios/utils</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 判断是否要给错误消息加上错误码，只在该模块内部使用
+ * @param {string} message -错误消息
+ * @param {string} code -错误码
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">buildErrorMessage</span><span class="token punctuation">(</span>msg<span class="token punctuation">,</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 判断一下是不是英文的，是英文的给默认提示，这个正则写的不一定完备</span>
+    <span class="token keyword">let</span> isEnglish <span class="token operator">=</span> <span class="token constant">REG_EXP_ENGLISH</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> processedMessage <span class="token operator">=</span> isEnglish <span class="token operator">?</span> <span class="token constant">TIPS_ERROR</span><span class="token punctuation">.</span><span class="token constant">DEFAULT_ERROR</span> <span class="token punctuation">:</span> msg
+    <span class="token keyword">return</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>processedMessage<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>code<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)`</span></span> <span class="token punctuation">:</span> processedMessage
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token constant">TIPS_ERROR</span><span class="token punctuation">.</span><span class="token constant">DEFAULT_ERROR</span> <span class="token comment">//TIPS_ERROR.DEFAULT_ERROR为'糟糕！服务器被怪兽吃掉啦QAQ'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>测试通过的情况下</li></ul><div class="language-bash extra-class"><pre class="language-bash"><code>$ jest
+ PASS  src/tests/unit/test.spec.js
+  ✓ 测试buildErrorMessage函数输出是否与预期相符 <span class="token punctuation">(</span>4ms<span class="token punctuation">)</span>
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.325s
+Ran all <span class="token function">test</span> suites.
+✨  Done <span class="token keyword">in</span> 2.30s.
+</code></pre></div><ul><li>测试没有通过会有提示</li></ul><div class="language-bash extra-class"><pre class="language-bash"><code>$ jest
+ FAIL  src/tests/unit/test.spec.js
+  ✕ 测试buildErrorMessage函数输出是否与预期相符 <span class="token punctuation">(</span>11ms<span class="token punctuation">)</span>
+
+  ● 测试buildErrorMessage函数输出是否与预期相符
+
+    expect<span class="token punctuation">(</span>received<span class="token punctuation">)</span>.toBe<span class="token punctuation">(</span>expected<span class="token punctuation">)</span> // Object.is equality
+
+    Expected: <span class="token string">&quot;你&quot;</span>
+    Received: <span class="token string">&quot;你(200)&quot;</span>
+
+       6 <span class="token operator">|</span>   process.env.NODE_ENV <span class="token operator">=</span> <span class="token string">'development'</span>
+       7 <span class="token operator">|</span>   expect<span class="token punctuation">(</span>buildErrorMessage<span class="token punctuation">(</span><span class="token string">'you'</span>, 200<span class="token punctuation">))</span>.toBe<span class="token punctuation">(</span><span class="token string">'糟糕！服务器被怪兽吃掉啦QAQ(200)'</span><span class="token punctuation">)</span>
+    <span class="token operator">&gt;</span>  8 <span class="token operator">|</span>   expect<span class="token punctuation">(</span>buildErrorMessage<span class="token punctuation">(</span><span class="token string">'你'</span>, 200<span class="token punctuation">))</span>.toBe<span class="token punctuation">(</span><span class="token string">'你'</span><span class="token punctuation">)</span>
+         <span class="token operator">|</span>                                       ^
+       9 <span class="token operator">|</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      10 <span class="token operator">|</span>
+
+      at Object.toBe <span class="token punctuation">(</span>src/tests/unit/test.spec.js:8:39<span class="token punctuation">)</span>
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        1.315s
+Ran all <span class="token function">test</span> suites.
+error Command failed with <span class="token keyword">exit</span> code 1.
+</code></pre></div><p>完成~</p><p><strong>更加复杂的用法，请看<a href="https://jestjs.io/img/jest.svg" target="_blank" rel="noopener noreferrer">Jest-单元测试<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></strong></p></div><div class="page-edit"><!----><!----></div><!----></div></div></div>
+    <script src="/MyBlog/assets/js/11.3dd0d6bb.js" defer></script><script src="/MyBlog/assets/js/app.19eb8d83.js" defer></script>
+  </body>
+</html>

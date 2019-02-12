@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Countly开源框架应用于项目 | Meteor</title>
+    <meta name="description" content="欢迎来到我的个人页面">
+    
+    
+    <link rel="preload" href="/MyBlog/assets/css/23.styles.cc84573a.css" as="style"><link rel="preload" href="/MyBlog/assets/js/app.19eb8d83.js" as="script"><link rel="preload" href="/MyBlog/assets/js/20.e5f657ab.js" as="script"><link rel="prefetch" href="/MyBlog/assets/js/12.53cafe37.js"><link rel="prefetch" href="/MyBlog/assets/js/1.38c1cab2.js"><link rel="prefetch" href="/MyBlog/assets/js/2.493d4717.js"><link rel="prefetch" href="/MyBlog/assets/js/3.fec61410.js"><link rel="prefetch" href="/MyBlog/assets/js/4.7b46e1a9.js"><link rel="prefetch" href="/MyBlog/assets/js/5.a8da7034.js"><link rel="prefetch" href="/MyBlog/assets/js/6.1afa3de3.js"><link rel="prefetch" href="/MyBlog/assets/js/7.bb628056.js"><link rel="prefetch" href="/MyBlog/assets/js/8.4320c542.js"><link rel="prefetch" href="/MyBlog/assets/js/9.ae9485eb.js"><link rel="prefetch" href="/MyBlog/assets/js/10.4f6f2f80.js"><link rel="prefetch" href="/MyBlog/assets/js/11.3dd0d6bb.js"><link rel="prefetch" href="/MyBlog/assets/js/13.4a7a2bd8.js"><link rel="prefetch" href="/MyBlog/assets/js/14.fd64b4ff.js"><link rel="prefetch" href="/MyBlog/assets/js/15.0aea93d5.js"><link rel="prefetch" href="/MyBlog/assets/js/16.205e0222.js"><link rel="prefetch" href="/MyBlog/assets/js/17.23dda7fa.js"><link rel="prefetch" href="/MyBlog/assets/js/18.9a90913a.js"><link rel="prefetch" href="/MyBlog/assets/js/19.217ac63a.js"><link rel="prefetch" href="/MyBlog/assets/js/21.a7e51597.js"><link rel="prefetch" href="/MyBlog/assets/js/22.4c47086b.js">
+    <link rel="stylesheet" href="/MyBlog/assets/css/23.styles.cc84573a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/MyBlog/" class="home-link router-link-active"><!----><span class="site-name">
+      Meteor
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/MyBlog/" class="nav-link">主页</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">博客</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  正在动工,可先使用搜索栏搜索关键字寻找博文
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">github</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="https://github.com/MeteorOCC" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  并没有这一个选项quq
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><!----></nav><!----></div><div class="page"><div class="content"><h2 id="countly开源框架应用于项目"><a href="#countly开源框架应用于项目" aria-hidden="true" class="header-anchor">#</a> Countly开源框架应用于项目</h2><h3 id="封装"><a href="#封装" aria-hidden="true" class="header-anchor">#</a> 封装</h3><p><strong>基本API</strong></p><p>Countly文档内提供了一些API调用方法，比如说加入想要统计用户信息，以下为例子：</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'user_details'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+    <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Arturs Sosins&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;username&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;ar2rsawseen&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;email&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;test@test.com&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;organization&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Countly&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;phone&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;+37112345678&quot;</span><span class="token punctuation">,</span>
+    <span class="token comment">//Web URL to picture</span>
+    <span class="token string">&quot;picture&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;https://pbs.twimg.com/profile_images/1442562237/012_n_400x400.jpg&quot;</span><span class="token punctuation">,</span> 
+    <span class="token string">&quot;gender&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;M&quot;</span><span class="token punctuation">,</span>
+    <span class="token string">&quot;byear&quot;</span><span class="token punctuation">:</span> <span class="token number">1987</span><span class="token punctuation">,</span> <span class="token comment">//birth year</span>
+    <span class="token string">&quot;custom&quot;</span><span class="token punctuation">:</span><span class="token punctuation">{</span>
+      <span class="token string">&quot;key1&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;value1&quot;</span><span class="token punctuation">,</span>
+      <span class="token string">&quot;key2&quot;</span><span class="token punctuation">:</span><span class="token string">&quot;value2&quot;</span><span class="token punctuation">,</span>
+      <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>想要修改这些用户信息也可以，比如说增加当前值或其他存储数值组：</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.set'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//set custom property</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.set_once'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//set custom property only if property does not exist</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.increment'</span><span class="token punctuation">,</span> key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//increment value in key by one</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.increment_by'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//increment value in key by provided value</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.multiply'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//multiply value in key by provided value</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.max'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//save max value between current and provided</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.min'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//save min value between current and provided</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.push'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//add value to key as array element</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.push_unique'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//add value to key as array element, but only store unique values in array</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.pull'</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//remove value from array under property with key as name</span>
+Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'userData.save'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//send userData to server</span>
+</code></pre></div><hr><p><strong>JavaScript错误追踪</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'track_errors'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><p>还可以添加更多的分字段或属性，通过提供一个object/键值对添加到错误报告</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'track_errors'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+	<span class="token string">&quot;facebook_sdk&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;2.3&quot;</span><span class="token punctuation">,</span>
+	<span class="token string">&quot;jquery&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;1.8&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre></div><p>除了自动报告未处理的错误，也可以报告处理例外的错误以方便稍后处理。并且你可以选择再次提供在报告中使用的自定义字段(或使用 <strong>track_error</strong> 方法）。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Countly.log_error(error, segments);</span>
+<span class="token keyword">try</span><span class="token punctuation">{</span>
+	<span class="token comment">//do something here</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">catch</span><span class="token punctuation">(</span>ex<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token comment">//report error to Countly</span>
+  Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'log_error'</span><span class="token punctuation">,</span> ex<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>为了进一步了解用户遇到错误之前的行为，可以在代码中埋下breadcrumbs，这些breadcrumbs将结合在一个日志中。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'add_log'</span><span class="token punctuation">,</span> <span class="token string">&quot;user clicked button a&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr><p><strong>修改设备 ID</strong></p><p>在某些情况下，您可能需要修改用户的ID，例如当用户换了ID。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'change_id'</span><span class="token punctuation">,</span> <span class="token string">&quot;myNewId&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>ID换了，那么数据可能要合并，以便跟踪用户跨设备的行为</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'change_id'</span><span class="token punctuation">,</span> <span class="token string">&quot;myNewId&quot;</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><hr><p><strong>在Webview中使用Web SDK(一般用于native app)</strong></p><p>①确保Webview启用了JavaScript、本地存储</p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// Android</span>
+myWebView<span class="token punctuation">.</span><span class="token function">getSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setJavaScriptEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myWebView<span class="token punctuation">.</span><span class="token function">getSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDomStorageEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myWebView<span class="token punctuation">.</span><span class="token function">getSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDatabaseEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>Build<span class="token punctuation">.</span><span class="token constant">VERSION</span><span class="token punctuation">.</span><span class="token constant">SDK_INT</span> <span class="token operator">&lt;</span> Build<span class="token punctuation">.</span><span class="token constant">VERSION_CODES</span><span class="token punctuation">.</span><span class="token constant">KITKAT</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    myWebView<span class="token punctuation">.</span><span class="token function">getSettings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">setDatabasePath</span><span class="token punctuation">(</span><span class="token string">&quot;/data/data/&quot;</span> <span class="token operator">+</span> myWebView<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getPackageName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">&quot;/databases/&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>②初始化</p><ul><li>通过加入初始化代码以延迟初始化Countly</li><li>在Webview不跟踪会话，因为它们是Native app跟踪</li><li>一旦WebView加载，把device_id发送到webview ，然后开始初始化</li><li>在Native App方面，你需要在WebView调用JavaScript功能，发送device_id。</li></ul><p><code>初始化</code>中已含有初始化的代码，如有疑惑请前去查看。</p><hr><p>更多请参考<a href="https://resources.count.ly/v2.0/docs/web-analytic-javascript#section-%E8%B7%9F%E8%B8%AAjavascript%E9%94%99%E8%AF%AF" target="_blank" rel="noopener noreferrer">Countly开源框架使用说明<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p><p>根据上述结合项目实际，我们封装了如下两个JS文件</p><p><strong>APIBasic.js</strong>、<strong>APIAdvanced.js</strong></p><p>在Countly提供的初始API下做一层基本的封装(<strong>APIBasic.js</strong>)，先满足快速调用所需，然后再做进一步的封装来满足项目所需(<strong>APIAdvanced.js</strong>)。</p><p><strong>APIBasic.js</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 对Countly的基本封装，不建议直接使用
+ * @module analytic/basicAPI
+ */</span>
+<span class="token keyword">function</span> <span class="token function">track</span> <span class="token punctuation">(</span>trackArgs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>Countly <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">.</span>Countly<span class="token punctuation">.</span>q <span class="token keyword">instanceof</span> <span class="token class-name">Array</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 封装基本的数据记录方法Countly.q.push()</span>
+    window<span class="token punctuation">.</span>Countly<span class="token punctuation">.</span>q<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>trackArgs<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Countly 尚未就绪'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 封装自动化跟踪用户会话 Countly.q.push(['track_sessions'])</span>
+<span class="token keyword">function</span> <span class="token function">trackSession</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'track_sessions'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 封装跟踪JavaScript错误 Countly.q.push(['track_errors'，options])</span>
+<span class="token keyword">function</span> <span class="token function">trackErrors</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'track_errors'</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'track_errors'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 封装跟踪页面浏览数 Countly.q.push(['track_pageview'，options])</span>
+<span class="token keyword">function</span> <span class="token function">trackPageView</span> <span class="token punctuation">(</span>routePath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'track_pageview'</span><span class="token punctuation">,</span> routePath<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 封装报告处理例外的错误 Countly.q.push(['track_pageview'，options])</span>
+<span class="token keyword">function</span> <span class="token function">logError</span> <span class="token punctuation">(</span>exception<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'log_error'</span><span class="token punctuation">,</span> exception<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//封装breadcrumbs,了解用户遇到错误之前的行为</span>
+<span class="token keyword">function</span> <span class="token function">trackEvent</span> <span class="token punctuation">(</span>options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// options示例，请使用我们定义的规范</span>
+  <span class="token comment">// {</span>
+  <span class="token comment">//   &quot;key&quot;: &quot;click&quot;,</span>
+  <span class="token comment">//   &quot;count&quot;: 1,</span>
+  <span class="token comment">//   &quot;sum&quot;: 1.5,</span>
+  <span class="token comment">//   &quot;dur&quot;: 30,</span>
+  <span class="token comment">//   &quot;segmentation&quot;: {</span>
+  <span class="token comment">//     &quot;key1&quot;: &quot;value1&quot;,</span>
+  <span class="token comment">//     &quot;key2&quot;: &quot;value2&quot;</span>
+  <span class="token comment">//   }</span>
+  <span class="token comment">// }</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'add_event'</span><span class="token punctuation">,</span> options<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//封装breadcrumbs，其余行为</span>
+<span class="token keyword">function</span> <span class="token function">addLog</span> <span class="token punctuation">(</span>log<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'add_log'</span><span class="token punctuation">,</span> log<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//封装某个事件的开始(自定义字段，与官方文档无关)</span>
+<span class="token keyword">function</span> <span class="token function">startEvent</span> <span class="token punctuation">(</span>eventName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'start_event'</span><span class="token punctuation">,</span> eventName<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//封装某个事件的结束(自定义字段，与官方文档无关)</span>
+<span class="token keyword">function</span> <span class="token function">endEvent</span> <span class="token punctuation">(</span>eventName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">track</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'end_event'</span><span class="token punctuation">,</span> eventName<span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//将封装的方法导出在analyticMethods对象上。</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> analyticMethods <span class="token operator">=</span> <span class="token punctuation">{</span>
+  trackSession<span class="token punctuation">,</span>
+  trackErrors<span class="token punctuation">,</span>
+  trackPageView<span class="token punctuation">,</span>
+  logError<span class="token punctuation">,</span>
+  addLog<span class="token punctuation">,</span>
+  trackEvent<span class="token punctuation">,</span>
+  startEvent<span class="token punctuation">,</span>
+  endEvent
+<span class="token punctuation">}</span>
+<span class="token comment">//在Vue.prototype上挂载$analytic方法以便全局调用。</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">install</span> <span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>analyticMethods<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>method<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic<span class="token punctuation">[</span>method<span class="token punctuation">]</span> <span class="token operator">=</span> analyticMethods<span class="token punctuation">[</span>method<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>APIAdvanced.js</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 对Countly基础封装的进一步封装，建议使用这里的方法
+ * @module analytic/api
+ */</span>
+<span class="token comment">//导入项目封装的基本封装方法</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  analyticMethods
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./APIBasic'</span>
+<span class="token keyword">import</span> event <span class="token keyword">from</span> <span class="token string">'../constant/event'</span>
+<span class="token comment">//专门封装一个用于记录click事件的方法</span>
+<span class="token keyword">function</span> <span class="token function">trackClick</span> <span class="token punctuation">(</span>segmentation<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  analyticMethods<span class="token punctuation">.</span><span class="token function">trackEvent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    key<span class="token punctuation">:</span> <span class="token string">'click'</span><span class="token punctuation">,</span>
+    segmentation
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 性能统计,最基础的API,并没有暴露出去</span>
+<span class="token keyword">function</span> <span class="token function">trackPerformance</span> <span class="token punctuation">(</span>segmentation<span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// dur是以秒计的，这里不用</span>
+  <span class="token comment">// count就让默认为1</span>
+  analyticMethods<span class="token punctuation">.</span><span class="token function">trackEvent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    key<span class="token punctuation">:</span> event<span class="token punctuation">.</span>performance<span class="token punctuation">,</span>
+    sum<span class="token punctuation">:</span> milliSeconds<span class="token punctuation">,</span>
+    segmentation
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 记录navigation的性能指标</span>
+<span class="token keyword">function</span> <span class="token function">trackNavigationPerformance</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">trackPerformance</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    navigation<span class="token punctuation">:</span> name
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 记录script加载的时间</span>
+<span class="token keyword">function</span> <span class="token function">trackScriptPerformance</span> <span class="token punctuation">(</span>resourceName<span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">trackPerformance</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    script<span class="token punctuation">:</span> resourceName
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 记录image加载的时间</span>
+<span class="token keyword">function</span> <span class="token function">trackImagePerformance</span> <span class="token punctuation">(</span>resourceName<span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">trackPerformance</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    image<span class="token punctuation">:</span> resourceName
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 记录style加载的时间</span>
+<span class="token keyword">function</span> <span class="token function">trackStylePerformance</span> <span class="token punctuation">(</span>resourceName<span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">trackPerformance</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    style<span class="token punctuation">:</span> resourceName
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 跟踪时间</span>
+<span class="token keyword">function</span> <span class="token function">trackDuration</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> milliSeconds<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  analyticMethods<span class="token punctuation">.</span><span class="token function">trackEvent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    key<span class="token punctuation">:</span> name<span class="token punctuation">,</span>
+    sum<span class="token punctuation">:</span> milliSeconds
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> trackMethods <span class="token operator">=</span> <span class="token punctuation">{</span>
+  trackClick<span class="token punctuation">,</span>
+  trackDuration<span class="token punctuation">,</span>
+  trackNavigationPerformance<span class="token punctuation">,</span>
+  trackScriptPerformance<span class="token punctuation">,</span>
+  trackImagePerformance<span class="token punctuation">,</span>
+  trackStylePerformance
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">install</span> <span class="token punctuation">(</span>Vue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>trackMethods<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>method<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic<span class="token punctuation">[</span>method<span class="token punctuation">]</span> <span class="token operator">=</span> trackMethods<span class="token punctuation">[</span>method<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><hr><h3 id="性能追踪"><a href="#性能追踪" aria-hidden="true" class="header-anchor">#</a> 性能追踪</h3><p>因为window.performance中已经记录了很多性能方面的东西，无需我们做过多的事情，记录即可。</p><p>下面代码示例中根据自己项目需求引入所需要记录的性能即可。</p><p><strong>首屏性能</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 性能监控模块
+ * @module
+ */</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>
+  performance
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'../constant/segmentation'</span>
+
+<span class="token comment">/**
+ * 监控navigation性能
+ * @function
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">trackNavigation</span> <span class="token punctuation">(</span>analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//  https://juejin.im/entry/58ba9cb5128fe100643da2cc</span>
+  <span class="token comment">// （使用该api时需要在页面完全加载完成之后才能使用，最简单的办法是在window.onload事件中读取各种数据，因为很多值必须在页面完全加载之后才能得出。）</span>
+
+  <span class="token keyword">var</span> timing <span class="token operator">=</span> window<span class="token punctuation">.</span>performance <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">.</span>performance<span class="token punctuation">.</span>timing
+  <span class="token comment">// var navigation = window.performance &amp;&amp; window.performance.navigation</span>
+
+  <span class="token comment">// 重定向次数：</span>
+  <span class="token comment">// var redirectCount = navigation &amp;&amp; navigation.redirectCount</span>
+
+  <span class="token comment">// 跳转耗时：</span>
+  <span class="token comment">// var redirect = timing.redirectEnd - timing.redirectStart</span>
+
+  <span class="token comment">// APP CACHE 耗时：</span>
+  <span class="token comment">// var appcache = Math.max(timing.domainLookupStart - timing.fetchStart, 0)</span>
+
+  <span class="token comment">// DNS 解析耗时：</span>
+  <span class="token comment">// var dnsDuration = timing.domainLookupEnd - timing.domainLookupStart</span>
+  <span class="token comment">// analytic.trackNavigationPerformance(performance.DNSDuration, dnsDuration)</span>
+
+  <span class="token comment">// TCP 链接耗时：</span>
+  <span class="token comment">// var conn = timing.connectEnd - timing.connectStart</span>
+
+  <span class="token comment">// 等待服务器响应耗时（注意是否存在cache）：</span>
+  <span class="token comment">// var request = timing.responseStart - timing.requestStart</span>
+  <span class="token comment">// analytic.trackNavigationPerformance(performance.requestDuration, request)</span>
+
+  <span class="token comment">// 内容加载耗时（注意是否存在cache）:</span>
+  <span class="token comment">// var response = timing.responseEnd - timing.responseStart</span>
+  <span class="token comment">// analytic.trackNavigationPerformance(performance.responseDuration, response)</span>
+
+  <span class="token comment">// 总体网络交互耗时，即开始跳转到服务器资源下载完成：</span>
+  <span class="token keyword">var</span> network <span class="token operator">=</span> timing<span class="token punctuation">.</span>responseEnd <span class="token operator">-</span> timing<span class="token punctuation">.</span>navigationStart
+  analytic<span class="token punctuation">.</span><span class="token function">trackNavigationPerformance</span><span class="token punctuation">(</span>performance<span class="token punctuation">.</span>networkDuration<span class="token punctuation">,</span> network<span class="token punctuation">)</span>
+
+  <span class="token comment">// 渲染处理：</span>
+  <span class="token keyword">var</span> processing <span class="token operator">=</span> <span class="token punctuation">(</span>timing<span class="token punctuation">.</span>domComplete <span class="token operator">||</span> timing<span class="token punctuation">.</span>domLoading<span class="token punctuation">)</span> <span class="token operator">-</span> timing<span class="token punctuation">.</span>domLoading
+  analytic<span class="token punctuation">.</span><span class="token function">trackNavigationPerformance</span><span class="token punctuation">(</span>performance<span class="token punctuation">.</span>DOMRenderDuration<span class="token punctuation">,</span> processing<span class="token punctuation">)</span>
+
+  <span class="token comment">// 抛出 load 事件：</span>
+  <span class="token comment">// var load = timing.loadEventEnd - timing.loadEventStart</span>
+
+  <span class="token comment">// 总耗时：</span>
+  <span class="token comment">// var total = (timing.loadEventEnd || timing.loadEventStart || timing.domComplete || timing.domLoading) - timing.navigationStart</span>
+
+  <span class="token comment">// 可交互：</span>
+  <span class="token keyword">var</span> domInteractiveDuration <span class="token operator">=</span> timing<span class="token punctuation">.</span>domInteractive <span class="token operator">-</span> timing<span class="token punctuation">.</span>navigationStart
+  analytic<span class="token punctuation">.</span><span class="token function">trackNavigationPerformance</span><span class="token punctuation">(</span>performance<span class="token punctuation">.</span>DOMInteractiveDuration<span class="token punctuation">,</span> domInteractiveDuration<span class="token punctuation">)</span>
+
+  <span class="token comment">// 请求响应耗时，即 T0，注意cache：</span>
+  <span class="token comment">// var t0 = timing.responseStart - timing.navigationStart</span>
+  <span class="token comment">// analytic.trackNavigationPerformance(performance.responseStartDuration, t0)</span>
+
+  <span class="token comment">// 首次出现内容，即 T1：</span>
+  <span class="token keyword">var</span> domLoadDuration <span class="token operator">=</span> timing<span class="token punctuation">.</span>domLoading <span class="token operator">-</span> timing<span class="token punctuation">.</span>navigationStart
+  analytic<span class="token punctuation">.</span><span class="token function">trackNavigationPerformance</span><span class="token punctuation">(</span>performance<span class="token punctuation">.</span>DOMLoadDuration<span class="token punctuation">,</span> domLoadDuration<span class="token punctuation">)</span>
+
+  <span class="token comment">// 内容加载完毕，即 T3：</span>
+  <span class="token keyword">var</span> domLoadedDuration <span class="token operator">=</span> timing<span class="token punctuation">.</span>loadEventEnd <span class="token operator">-</span> timing<span class="token punctuation">.</span>navigationStart
+  analytic<span class="token punctuation">.</span><span class="token function">trackNavigationPerformance</span><span class="token punctuation">(</span>performance<span class="token punctuation">.</span>DOMLoadedDuration<span class="token punctuation">,</span> domLoadedDuration<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><p><strong>各项资源的加载时间</strong></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">/**
+ * 统计各项资源的加载时间
+ * @module
+ */</span>
+
+<span class="token keyword">function</span> <span class="token function">parseURL</span> <span class="token punctuation">(</span>url<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> a <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>
+  a<span class="token punctuation">.</span>href <span class="token operator">=</span> url
+  <span class="token keyword">return</span> a
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getEntries</span> <span class="token punctuation">(</span>filter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>filter <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> filter <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>performance <span class="token operator">&amp;&amp;</span> window<span class="token punctuation">.</span>performance<span class="token punctuation">.</span>getEntries<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// chrome里面传参是没有用的</span>
+      <span class="token keyword">let</span> entries <span class="token operator">=</span> window<span class="token punctuation">.</span>performance<span class="token punctuation">.</span><span class="token function">getEntries</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> entries <span class="token operator">&amp;&amp;</span> entries<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>filter<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getFileNameRegExpWithoutSuffix</span> <span class="token punctuation">(</span>fileSuffix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RegExp</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`/([^/.]+)(\\.[^/]+)*\\.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>fileSuffix<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">$`</span></span><span class="token punctuation">,</span> <span class="token string">'ig'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">getResourceName</span> <span class="token punctuation">(</span>entryName<span class="token punctuation">,</span> regexp<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> url <span class="token operator">=</span> <span class="token function">parseURL</span><span class="token punctuation">(</span>entryName<span class="token punctuation">)</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>url<span class="token punctuation">.</span>pathname<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>result <span class="token operator">&amp;&amp;</span> result<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">||</span> url<span class="token punctuation">.</span>pathname
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">trackResource</span> <span class="token punctuation">(</span>filter<span class="token punctuation">,</span> currentCount<span class="token punctuation">,</span> trackerFun<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> resources <span class="token operator">=</span> <span class="token function">getEntries</span><span class="token punctuation">(</span>filter<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>resources <span class="token operator">&amp;&amp;</span> resources<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> currentCount<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> resources<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> entry <span class="token operator">=</span> resources<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>entry<span class="token punctuation">.</span>duration <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 取出js的文件名</span>
+        <span class="token function">trackerFun</span><span class="token punctuation">(</span>entry<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> resources<span class="token punctuation">.</span>length
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 统计script</span>
+<span class="token keyword">var</span> scriptCount <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">function</span> <span class="token function">trackScript</span> <span class="token punctuation">(</span>analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> newScriptCount <span class="token operator">=</span> <span class="token function">trackResource</span><span class="token punctuation">(</span>
+    entry <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> entry<span class="token punctuation">.</span>entryType <span class="token operator">===</span> <span class="token string">'resource'</span> <span class="token operator">&amp;&amp;</span> entry<span class="token punctuation">.</span>initiatorType <span class="token operator">===</span> <span class="token string">'script'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    scriptCount<span class="token punctuation">,</span>
+    entry <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> regexp <span class="token operator">=</span> <span class="token function">getFileNameRegExpWithoutSuffix</span><span class="token punctuation">(</span><span class="token string">'js'</span><span class="token punctuation">)</span>
+      <span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">getResourceName</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'vendors~'</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">,</span> regexp<span class="token punctuation">)</span>
+      analytic<span class="token punctuation">.</span><span class="token function">trackScriptPerformance</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> entry<span class="token punctuation">.</span>duration<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>newScriptCount <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    scriptCount <span class="token operator">=</span> newScriptCount
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 统计图片</span>
+<span class="token keyword">var</span> imageCount <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">function</span> <span class="token function">trackImage</span> <span class="token punctuation">(</span>analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> newImageCount <span class="token operator">=</span> <span class="token function">trackResource</span><span class="token punctuation">(</span>
+    entry <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> entry<span class="token punctuation">.</span>entryType <span class="token operator">===</span> <span class="token string">'resource'</span> <span class="token operator">&amp;&amp;</span>
+        <span class="token punctuation">(</span>entry<span class="token punctuation">.</span>initiatorType <span class="token operator">===</span> <span class="token string">'img'</span> <span class="token operator">||</span> entry<span class="token punctuation">.</span>initiatorType <span class="token operator">===</span> <span class="token string">'css'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    imageCount<span class="token punctuation">,</span>
+    entry <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">getResourceName</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token regex">/\/([^/]+\.\w+)$/ig</span><span class="token punctuation">)</span>
+      analytic<span class="token punctuation">.</span><span class="token function">trackImagePerformance</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> entry<span class="token punctuation">.</span>duration<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>newImageCount <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    imageCount <span class="token operator">=</span> newImageCount
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 统计css</span>
+<span class="token keyword">var</span> styleCount <span class="token operator">=</span> <span class="token number">0</span>
+
+<span class="token keyword">function</span> <span class="token function">trackStyle</span> <span class="token punctuation">(</span>analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> newStyleCount <span class="token operator">=</span> <span class="token function">trackResource</span><span class="token punctuation">(</span>
+    entry <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> entry<span class="token punctuation">.</span>entryType <span class="token operator">===</span> <span class="token string">'resource'</span> <span class="token operator">&amp;&amp;</span> entry<span class="token punctuation">.</span>initiatorType <span class="token operator">===</span> <span class="token string">'link'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    styleCount<span class="token punctuation">,</span>
+    entry <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token function">getResourceName</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token function">getFileNameRegExpWithoutSuffix</span><span class="token punctuation">(</span><span class="token string">'css'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      analytic<span class="token punctuation">.</span><span class="token function">trackStylePerformance</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> entry<span class="token punctuation">.</span>duration<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>newStyleCount <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    styleCount <span class="token operator">=</span> newStyleCount
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>analytic<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">trackImage</span><span class="token punctuation">(</span>analytic<span class="token punctuation">)</span>
+  <span class="token function">trackScript</span><span class="token punctuation">(</span>analytic<span class="token punctuation">)</span>
+  <span class="token function">trackStyle</span><span class="token punctuation">(</span>analytic<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h3 id="初始化"><a href="#初始化" aria-hidden="true" class="header-anchor">#</a> 初始化</h3><p><strong>InitAnalytic.js</strong></p><p>应用的项目为native app，所以需要这么一个初始化，如有疑惑可以先看上面<code>封装</code></p><p>因为文档中异步调用建议在文档的head插入初始化代码，所以需要和模块的bundle独立开来。</p><div class="language-javascript extra-class"><pre class="language-javascript"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Countly init'</span><span class="token punctuation">)</span>
+<span class="token keyword">var</span> Countly <span class="token operator">=</span> window<span class="token punctuation">.</span>Countly <span class="token operator">=</span> window<span class="token punctuation">.</span>Countly <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+Countly<span class="token punctuation">.</span>q <span class="token operator">=</span> Countly<span class="token punctuation">.</span>q <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment">// provide your app key that you retrieved from Countly dashboard</span>
+Countly<span class="token punctuation">.</span>app_key <span class="token operator">=</span> <span class="token string">'c96cd546abe72c9837d93e28c259cc2d7e73728c'</span>
+
+<span class="token comment">// provide your server IP or name. Use try.count.ly for EE trial server.</span>
+<span class="token comment">// if you use your own server, make sure you have https enabled if you use</span>
+<span class="token comment">// https below.</span>
+Countly<span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token string">'https://demo.finsquirrel.com:9443'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// load countly script asynchronously</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> cly <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span>
+  cly<span class="token punctuation">.</span>type <span class="token operator">=</span> <span class="token string">'text/javascript'</span>
+  cly<span class="token punctuation">.</span><span class="token keyword">async</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token comment">// enter url of script here</span>
+  cly<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'//cdn.jsdelivr.net/countly-sdk-web/latest/countly.min.js'</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Request Countly'</span><span class="token punctuation">)</span>
+  cly<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Countly<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Countly initialized'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">var</span> s <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+  s<span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">insertBefore</span><span class="token punctuation">(</span>cly<span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>因为生产环境下window的load事件处理函数是不会触发，性能/错误最终需要在加载完成后执行，如有疑惑可以先看上面<code>封装</code></p><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> trackPerformance <span class="token keyword">from</span> <span class="token string">'./performance'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token function">install</span> <span class="token punctuation">(</span>Vue<span class="token punctuation">,</span> options<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> analytic <span class="token operator">=</span> Vue<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$analytic
+
+    <span class="token comment">// 生产环境下window的load事件处理函数是不会触发的,所以出此下策</span>
+    <span class="token keyword">var</span> initTimeId <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 因为要统计加载时间，所以放到加载完成后执行</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>performance<span class="token punctuation">.</span>timing<span class="token punctuation">.</span>loadEventEnd <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'track start'</span><span class="token punctuation">)</span>
+        analytic<span class="token punctuation">.</span><span class="token function">trackSession</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        analytic<span class="token punctuation">.</span><span class="token function">trackErrors</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">trackPerformance</span><span class="token punctuation">(</span>analytic<span class="token punctuation">)</span>
+        <span class="token function">clearInterval</span><span class="token punctuation">(</span>initTimeId<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 跟踪错误</span>
+    Vue<span class="token punctuation">.</span>config<span class="token punctuation">.</span><span class="token function-variable function">errorHandler</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>err<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> info<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'错误已跟踪'</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> vm<span class="token punctuation">,</span> info<span class="token punctuation">)</span>
+      err<span class="token punctuation">.</span>message <span class="token operator">=</span> <span class="token template-string"><span class="token string">`原始message:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>err<span class="token punctuation">.</span>message<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n
+        路由信息:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n
+        DOM innerHTML:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>vm<span class="token punctuation">.</span>$el <span class="token operator">&amp;&amp;</span> vm<span class="token punctuation">.</span>$el<span class="token punctuation">.</span>innerHTML<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n
+        info:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>info<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+      analytic<span class="token punctuation">.</span><span class="token function">logError</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div></div><div class="page-edit"><!----><!----></div><!----></div></div></div>
+    <script src="/MyBlog/assets/js/20.e5f657ab.js" defer></script><script src="/MyBlog/assets/js/app.19eb8d83.js" defer></script>
+  </body>
+</html>
